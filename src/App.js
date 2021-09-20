@@ -4,6 +4,7 @@ import NavBar from "./NavBar"
 import Home from "./Home"
 import Movies from "./Movies"
 import ReviewForm from "./ReviewForm";
+import {REVIEWS} from "../db.json"
 import './App.css';
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
 }
 
   useEffect(()=>{
-    fetch(`http://localhost:3000/reviews`)
+    fetch(REVIEWS)
       .then(res => res.json())
       .then(reviewData => setReviews(reviewData))
   },[])
@@ -43,7 +44,7 @@ function App() {
       <NavBar handleNextPage={handleNextPage} handlePreviousPage={handlePreviousPage}/>
       <Switch>
         <Route exact path="/">
-          <Home reviews={reviews}/>
+          <Home REVIEWS={REVIEWS}/>
         </Route>
         <Route exact path="/movies">
           {selectedMovie? <ReviewForm exact path="/Movies/ReviewForm" selectedMovie={selectedMovie} setSelectedMovie={setSelectedMovie}/>:<></>}
