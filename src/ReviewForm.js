@@ -1,6 +1,6 @@
 import { useState, useEffect} from "react"
 
-function ReviewForm({selectedMovie, REVIEWS}){
+function ReviewForm({selectedMovie, reviews}){
 
     const [review, setReview]=useState("")
     const [title, setTitle]=useState("")
@@ -9,7 +9,7 @@ function ReviewForm({selectedMovie, REVIEWS}){
     // const [banner, setBanner]=useState("") can't do this unless I add a setState to MovieCard onClick event
     
     function handleSubmit(){
-        fetch(REVIEWS,{
+        fetch(reviews,{
         method: "POST",
         headers: {
             "Content-Type": "application/json"
