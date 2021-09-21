@@ -122,7 +122,7 @@ code {
 
 .review-input{
   margin:auto;
-  /* background-color: black; */
+  background-color: black;
   width:60%;
   height:100px;
   color:orange;

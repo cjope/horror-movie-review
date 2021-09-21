@@ -20,7 +20,7 @@ function App() {
 }
 
   useEffect(()=>{
-    fetch(`http://localhost:3000/reviews`)
+    fetch('https://movie-review-json.herokuapp.com/REVIEWS')
       .then(res => res.json())
       .then(reviewData => setReviews(reviewData))
   },[])
