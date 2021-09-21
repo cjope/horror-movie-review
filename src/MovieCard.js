@@ -19,9 +19,9 @@ function MovieCard({movie, setSelectedMovie}){
         } //YUS!    
 
     return(
-        <div className="movie-card" onClick={()=>setSelectedMovie(movieTitle)}>
-            <h1 className="movie-card-title">{movieTitle}</h1>
-            <img className="movie-card-poster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movieTitle}>{movie.poster_url}</img>
+        <div className="movie-card" onClick={()=>setSelectedMovie(movie)}>
+            <h1 className="movie-card-title">{movie.title}</h1>
+            <img className="movie-card-poster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title}>{movie.poster_url}</img>
             <h2 className="movie-card-overview">{movie.overview}</h2>
             <p className="movie-card-release">Released {movie.release_date.slice(0,4)}</p>
             <h2 className="movie-card-rating">{voteToStars(voteStars)}</h2>

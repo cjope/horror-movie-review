@@ -5,11 +5,11 @@ function ReviewForm({selectedMovie, reviews}){
     const [review, setReview]=useState("")
     const [title, setTitle]=useState("")
     const [rating, setRating]=useState(0)
-    const [customTitle, setCustomTitle]=useState(selectedMovie)
+    const [movie, setmovie]=useState(selectedMovie)
     // const [banner, setBanner]=useState("") can't do this unless I add a setState to MovieCard onClick event
     
     function handleSubmit(){
-        fetch(reviews,{
+        fetch("https://movie-review-json.herokuapp.com/REVIEWS",{
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -27,7 +27,7 @@ function ReviewForm({selectedMovie, reviews}){
         <div className="review-form">
             <form onSubmit={handleSubmit}>
                 <div className="review-input">
-                <p>Write a Review for <b><input type="text" className="review-title" value={customTitle} onChange={(e)=>setCustomTitle(e.target.value)}></input></b></p>
+                <p>Write a Review for <b><input type="text" className="review-title" value={movie.title} onChange={(e)=>setmovie(e.target.value)}></input></b></p>
                 </div>
                 <div>
                 <textarea className="review-input" type="text" value={review} onChange={(e)=>setReview(e.target.value)}></textarea>
@@ -41,6 +41,7 @@ function ReviewForm({selectedMovie, reviews}){
                     </span>
                 </div>
                 </div>
+                <img>{}</img>
                 <div>
                 <input type="submit" className="button" value="Submit Review"></input>
                 <button className="button" onClick={()=>selectedMovie(null)}>Cancel</button>

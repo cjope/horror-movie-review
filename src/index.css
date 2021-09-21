@@ -11,7 +11,6 @@ body {
   width:60%;
 }
 
-
 .nav-all{
   padding:"20px";
   display:"flex";
@@ -49,7 +48,6 @@ body {
   width:auto;
   height: auto;
   border-radius: 15px;
-  /* border-top-left-radius: 50px; */
   padding:0;
   display: block;
   overflow: hidden;
@@ -65,18 +63,15 @@ body {
 
 .pumpkin-dark{
   width:4%;
-  opacity: .1;
+  opacity: .3;
 }
-
-
 
 .movie-card:hover{
   box-shadow:
-    0 0 50px #fff,            /* outer white */
-    -10px 0 80px orange,        /* outer left magenta */
-    10px 0 80px rgb(245, 205, 130);         /* outer right cyan */
+    0 0 50px #fff,
+    -10px 0 80px orange,
+    10px 0 80px rgb(245, 205, 130);
     cursor: pointer;
-    /* transform: scale(1.01); */
 }
 
 .movie-card-title{
@@ -100,7 +95,6 @@ body {
   color: orange;
 }
 
-
 .button{
   color: orange;
   font-family: "papyrus";
@@ -123,13 +117,12 @@ code {
   background-color: black;
   color:orange;
   font-family: "papyrus";
-  /* border:thin; */
   border-color: rgb(15, 15, 15);
 }
 
 .review-input{
   margin:auto;
-  background-color: black;
+  /* background-color: black; */
   width:60%;
   height:100px;
   color:orange;
@@ -139,6 +132,8 @@ code {
   border: orange;
   border-style: solid;
 }
+
+/*site css*/
 .star-rating {
   font-size: 0;
   white-space: nowrap;
@@ -161,14 +156,10 @@ code {
   background-size: contain;
 }
 .star-rating input {
-  /* -moz-appearance: none; */
   -webkit-appearance: none;
-  /* opacity: 0; */
-  /* display: inline-block; */
   width: 20%;
   height: 100%;
   margin: 0;
-  /* padding: 0; */
   z-index: 2;
   position: relative;
   cursor: pointer;
