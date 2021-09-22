@@ -4,7 +4,7 @@ function MovieCard({movie, setSelectedMovie}){
 
     const voteAverage = movie.vote_average
 
-    const movieTitle = movie.title
+    // const movieTitle = movie.title
 
     const p1 = <img className="pumpkin-light" alt="pumpkin-light" src="https://d29fhpw069ctt2.cloudfront.net/icon/image/85188/preview.svg"></img>
     const p2 = <img className="pumpkin-dark" alt="pumpkin-dark" src="https://d29fhpw069ctt2.cloudfront.net/icon/image/85188/preview.svg"></img>
@@ -19,7 +19,7 @@ function MovieCard({movie, setSelectedMovie}){
         } //YUS!    
 
     return(
-        <div className="movie-card" onClick={()=>setSelectedMovie(movie)}>
+        <div className="movie-card" onClick={()=>setSelectedMovie([movie])}>
             <h1 className="movie-card-title">{movie.title}</h1>
             <img className="movie-card-poster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title}>{movie.poster_url}</img>
             <h2 className="movie-card-overview">{movie.overview}</h2>

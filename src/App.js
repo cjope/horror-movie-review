@@ -12,15 +12,31 @@ function App() {
   const [movies, setMovies]=useState([])
   const [reviews, setReviews]=useState([])
   const [selectedMovie, setSelectedMovie]=useState(null)
+  
 
-  function fetchMovies(page){
+
+  let fetchMovies = (page) => {
     fetch(`https://api.themoviedb.org/3/discover/movie?api_key=058b20ba9bda19035670479e41a673af&sort_by=popularity.desc&release_date.lte=2000-01-01&release_date.gte=1960-01-01&with_genres=27&page=${page}`)
     .then(res => res.json())
     .then(movieData => setMovies(movieData.results))
-}
+  }
+  
+  const [searchedMovie, setSearchedMovie]=useState("")
+  const [searchQuery, setSearchQuery]=useState("")
+    
+  const searchURL = "https://api.themoviedb.org/3/search/movie?api_key=058b20ba9bda19035670479e41a673af&query="
 
   useEffect(()=>{
-    fetch('https://movie-review-json.herokuapp.com/REVIEWS')
+      fetch(`${searchURL}'${searchQuery}`)
+      .then(res=>res.json())
+      .then(data=>{
+        setMovies(data.results)
+      })
+  },[searchQuery])
+  
+
+  useEffect(()=>{
+    fetch('https://localhost:3000/REVIEWS')
       .then(res => res.json())
       .then(reviewData => setReviews(reviewData))
   },[])
@@ -47,10 +63,19 @@ function App() {
         </Route>
         <Route exact path="/movies">
           {selectedMovie? <ReviewForm exact path="/Movies/ReviewForm" selectedMovie={selectedMovie} setSelectedMovie={setSelectedMovie}/>:<></>}
-          <Movies page={page} movies={movies} selectedMovie={selectedMovie} setSelectedMovie={setSelectedMovie} handleNextPage={handleNextPage} handlePreviousPage={handlePreviousPage}/>
+          <Movies 
+            page={page}
+            movies={movies}
+            searchedMovie={searchedMovie}
+            setSearchQuery={setSearchQuery}
+            fetchMovies={fetchMovies}
+            searchQuery={searchQuery}
+            selectedMovie={selectedMovie}
+            setSelectedMovie={setSelectedMovie}
+            handleNextPage={handleNextPage}
+            handlePreviousPage={handlePreviousPage}/>
         </Route>
         <Route exact path="/reviewForm">
-
           <ReviewForm/>
         </Route>
       </Switch>

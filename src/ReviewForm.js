@@ -9,7 +9,7 @@ function ReviewForm({selectedMovie}){
     // const [banner, setBanner]=useState("") can't do this unless I add a setState to MovieCard onClick event
     
     function handleSubmit(){
-        fetch("https://movie-review-json.herokuapp.com/REVIEWS",{
+        fetch("https://localhost:3000/REVIEWS",{
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -17,6 +17,8 @@ function ReviewForm({selectedMovie}){
         body: JSON.stringify({title, review, rating})
     })
     }
+    console.log(selectedMovie[0].title)
+    console.log(selectedMovie[0].overview)
 
     useEffect(()=>{
         setTitle(selectedMovie)
@@ -27,7 +29,7 @@ function ReviewForm({selectedMovie}){
         <div className="review-form">
             <form onSubmit={handleSubmit}>
                 <div className="review-input">
-                <p>Write a Review for <b><input type="text" className="review-title" value={customTitle} onChange={(e)=>setCustomTitle(e.target.value)}></input></b></p>
+                <p>Write a Review for {selectedMovie[0].title}</p>
                 </div>
                 <div>
                 <textarea className="review-input" type="text" value={review} onChange={(e)=>setReview(e.target.value)}></textarea>
