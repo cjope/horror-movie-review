@@ -55,10 +55,10 @@ function App() {
     <div className="App">
       <NavBar />
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/Reviews">
           <Home reviews={reviews}/>
         </Route>
-        <Route exact path="/movies">
+        <Route exact path="/">
           {selectedMovie? <ReviewForm exact path="/Movies/ReviewForm" selectedMovie={selectedMovie} setSelectedMovie={setSelectedMovie}/>:undefined}
           <Movies 
             page={page}

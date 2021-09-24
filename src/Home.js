@@ -13,7 +13,7 @@ function Home(){
     return(
         <div>
             <h1>Reviews</h1>
-            <div  tabIndex="0">{reviewList}</div>
+            <div  /*tabIndex="0"*/>{reviewList}</div>
         </div>
     )
 }
