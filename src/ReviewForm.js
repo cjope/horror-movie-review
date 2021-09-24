@@ -1,37 +1,45 @@
-import { useState, useEffect} from "react"
+import { useState} from "react"
+import {REVIEWS} from "./db.json"
 
 function ReviewForm({selectedMovie}){
 
     const [review, setReview]=useState("")
-    const [title, setTitle]=useState("")
+    // const [title, setTitle]=useState("")
     const [rating, setRating]=useState(0)
-    const [customTitle, setCustomTitle]=useState(selectedMovie)
-    // const [banner, setBanner]=useState("") can't do this unless I add a setState to MovieCard onClick event
     
     function handleSubmit(){
-        fetch("https://localhost:3000/REVIEWS",{
+        fetch(REVIEWS,{
         method: "POST",
         headers: {
+            'Accept': 'application/json',
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({title, review, rating})
+        body: JSON.stringify({key:"",title:{selectedMovie}, review:{review}, likes:{rating}})
     })
     }
-    console.log(selectedMovie[0].title)
-    console.log(selectedMovie[0].overview)
 
-    useEffect(()=>{
-        setTitle(selectedMovie)
-        window.scrollTo(0,0)
-    },[selectedMovie])
+
+    // console.log(selectedMovie) //returns: The Excorcist string
+
+
+    console.log(REVIEWS)
+    console.log(selectedMovie) //returns {selectedMovie: undefined}
+    console.log(review) //returns nothing.
+    console.log(rating) //returns 5 (nice)
+
+
+//use effect should create its own array - it is taking all keys from "selectedMovie"
+    // useEffect((selectedMovie)=>{
+    //     setTitle(selectedMovie)
+    //     setReview(review)
+    //     setRating(rating)
+    //     // window.scrollTo(0,0)
+    // },[])
 
     return(
-        <div className="review-form">
+        <div  className="review-form">
             <form onSubmit={handleSubmit}>
-                <div className="review-input">
-                <p>Write a Review for {selectedMovie[0].title}</p>
-                </div>
-                <div>
+                <p >Write a Review for {selectedMovie}</p>
                 <textarea className="review-input" type="text" value={review} onChange={(e)=>setReview(e.target.value)}></textarea>
                 <div> 
                     <span className="star-rating">
@@ -42,11 +50,9 @@ function ReviewForm({selectedMovie}){
                         <input type="radio" name="rating" value="5"onClick={()=>setRating(5)}/><i></i>
                     </span>
                 </div>
-                </div>
                 <div>
                 <input type="submit" className="button" value="Submit Review"></input>
-                <button className="button" onClick={()=>selectedMovie(null)}>Cancel</button>
-                {/* does not work correctly on this Routed page - works great in Movies! */}
+                <button className="button" onClick={!selectedMovie}>Cancel</button>
                 </div>
             </form>
         </div>

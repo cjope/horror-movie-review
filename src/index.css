@@ -8,17 +8,16 @@ body {
   background-color: black;
   color: orange;
   font-family: "papyrus";
-  width:60%;
+  width:80%;
 }
 
 .nav-all{
-  padding:"20px";
-  display:"flex";
+  padding:1%;
+  display:flex;
   border-bottom: 1px solid darkorange;
   position: sticky;
   top:0;
   background-color: black;
-
 }
 
 .nav-bar {
@@ -91,13 +90,13 @@ body {
   margin:2%;
   padding: 2em;
   padding-inline: 5em;
-  background-color: rgb(8, 8, 8);
+  background-color: black;
   color: orange;
 }
 
 .button{
   color: orange;
-  font-family: "papyrus";
+  font-family: papyrus;
   background-color: black;
   margin: 2%;
 }
@@ -107,22 +106,17 @@ body {
   cursor:pointer;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 .review-title{
   margin-right: 2px;
   background-color: black;
   color:orange;
-  font-family: "papyrus";
+  font-family: papyrus;
   border-color: rgb(15, 15, 15);
 }
 
 .review-input{
   margin:auto;
-  background-color: black;
+  background-color: white;
   width:60%;
   height:100px;
   color:orange;
@@ -131,6 +125,18 @@ code {
 .review-form{
   border: orange;
   border-style: solid;
+  width: 75%;
+  position: fixed;
+  left: 50%;
+  margin-left: -37.5%;
+  margin-top: 10%;
+  background-color: rgb(46, 46, 46);
+  box-shadow:
+  0 0 50px #fff,
+  -10px 0 80px orange,
+  10px 0 80px rgb(245, 205, 130);
+  opacity: 1;
+  z-index: 10;
 }
 
 /*site css*/
@@ -138,8 +144,8 @@ code {
   font-size: 0;
   white-space: nowrap;
   display: inline-block;
-  width: 250px;
-  height: 50px;
+  width: 500px;
+  height: 100px;
   overflow: hidden;
   position: relative;
   background-size: contain;

@@ -1,7 +1,8 @@
-function Home({reviews}){
+import {REVIEWS} from "./db.json"
+function Home(){
 
-    const reviewList = reviews.map((review)=>(
-            <div key = {review.id} className="review-card">
+    const reviewList = REVIEWS.map((review)=>(
+            <div key = {review.id} className="movie-card">
             <h1>{review.title}</h1>
             <h2>{review.review}</h2>
             <h2>{review.likes}</h2>
