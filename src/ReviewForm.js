@@ -4,37 +4,23 @@ import {REVIEWS} from "./db.json"
 function ReviewForm({selectedMovie}){
 
     const [review, setReview]=useState("")
-    // const [title, setTitle]=useState("")
     const [rating, setRating]=useState(0)
     
     function handleSubmit(){
-        fetch(REVIEWS,{
+        fetch({REVIEWS},{
         method: "POST",
         headers: {
             'Accept': 'application/json',
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({key:"",title:{selectedMovie}, review:{review}, likes:{rating}})
+        body: JSON.stringify({title:selectedMovie, review:review, likes:rating})
     })
     }
 
-
-    // console.log(selectedMovie) //returns: The Excorcist string
-
-
     console.log(REVIEWS)
-    console.log(selectedMovie) //returns {selectedMovie: undefined}
-    console.log(review) //returns nothing.
-    console.log(rating) //returns 5 (nice)
-
-
-//use effect should create its own array - it is taking all keys from "selectedMovie"
-    // useEffect((selectedMovie)=>{
-    //     setTitle(selectedMovie)
-    //     setReview(review)
-    //     setRating(rating)
-    //     // window.scrollTo(0,0)
-    // },[])
+    console.log(selectedMovie)
+    console.log(review)
+    console.log(rating)
 
     return(
         <div  className="review-form">

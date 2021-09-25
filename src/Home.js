@@ -4,7 +4,7 @@ function Home(){
     const reviewList = REVIEWS.map((review)=>(
             <div key = {review.id} className="movie-card">
             <h1>{review.title}</h1>
-            <h2>{review.review}</h2>
+            <h2 style={{margin:"5%"}}>{review.review}</h2>
             <h2>{review.likes}</h2>
             {/* <img className="movie-card-poster" src={`https://image.tmdb.org/t/p/w500/${review.banner_path}`} alt={review.title}>{review.banner_url}</img> */}
         </div>

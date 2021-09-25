@@ -1,22 +1,19 @@
 {
-    "REVIEWS": [
-        {
-            "id": 1,
-            "title": "Evil Dead",
-            "review": "Test Review Text 1",
-            "likes": 8
-        },
-        {
-            "id": 2,
-            "title": "They Live",
-            "review": "Test Review Text 2",
-            "likes": 8
-        },
-        {
-            "id": 3,
-            "title": "Hotel Transylvania",
-            "review": "It STINKS!",
-            "likes": 2
-        }
-    ]
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }

@@ -1,6 +1,7 @@
 // import { useState } from "react"
+import ReviewForm from "./ReviewForm"
 
-function MovieCard({movie, setSelectedMovie}){
+function MovieCard({movie, selectedMovie, setSelectedMovie}){
 
     let voteStars = "✩✩✩✩✩"
 
@@ -16,20 +17,26 @@ function MovieCard({movie, setSelectedMovie}){
             if (voteAverage >=7 && voteAverage <9) return voteStars = <p>{p1}{p1}{p1}{p1}{p2}</p>
         if (voteAverage >=9) return voteStars = <p>{p1}{p1}{p1}{p1}{p1}</p>
         else return <p>{p2}{p2}{p2}{p2}{p2}</p>
-        } //YUS!    
-        
-        // const [movieToReview, setMovieToReview]=useState(movie.title)
-
+        }    
 
     return(
-        // <div className="movie-card" onClick={()=>setSelectedMovie([movie])}>
+        <div>
+            {!selectedMovie? undefined: <ReviewForm exact path="/Movies/ReviewForm" selectedMovie={selectedMovie}/>}
+            {movie.genre_ids.includes(27)? console.log(`${movie.title} is horror`):console.log(`${movie.title} is not horror`)}
+            
+        {movie.genre_ids.includes(27)? 
         <div className="movie-card" onClick={()=>setSelectedMovie(movie.title)}>
-        <h1 className="movie-card-title">{movie.title}</h1>
+            <h1 className="movie-card-title">{movie.title}</h1>
             <img className="movie-card-poster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title}>{movie.poster_url}</img>
             <h2 className="movie-card-overview">{movie.overview}</h2>
             <p className="movie-card-release">Released {!movie.release_date?movie.release_date:movie.release_date.slice(0,4)}</p>
             <h2 className="movie-card-rating">{voteToStars(voteStars)}</h2>
+        </div>:<></>
+
+        }    
+
         </div>
+        
     )
 }
 

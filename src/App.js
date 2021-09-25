@@ -11,7 +11,7 @@ function App() {
   const [page, setPage]=useState(1)
   const [movies, setMovies]=useState([])
   const [reviews, setReviews]=useState([])
-  const [searchQuery, setSearchQuery]=useState()
+  const [searchQuery, setSearchQuery]=useState("")
   const [selectedMovie, setSelectedMovie]=useState("")
 
   let fetchMovies = (page) => {
@@ -23,13 +23,26 @@ function App() {
   // console.log(REVIEWS)
   const searchURL = "https://api.themoviedb.org/3/search/movie?api_key=058b20ba9bda19035670479e41a673af&sort_by=popularity.desc&release_date.lte=2000-01-01&release_date.gte=1960-01-01&with_genres=27&query="
 
+
+  
   useEffect(()=>{
-      fetch(`${searchURL}'${searchQuery}`)
-      .then(res=>res.json())
-      .then(data=>{
-        setMovies(data.results)
-      })
-  },[searchQuery])
+    if(searchQuery===""){
+      return(
+          fetchMovies(page)
+      )
+    }
+    else{
+      return(
+        fetch(`${searchURL}'${searchQuery}`)
+        .then(res=>res.json())
+        .then(data=>{
+          setMovies(data.results)
+        })
+
+      )
+    }
+
+  },[searchQuery, page])
 
   // useEffect(()=>{
   //   fetch("https://movie-review-json.herokuapp.com/REVIEWS")
@@ -46,10 +59,7 @@ function App() {
     setPage(page-1)
   }
 
-  useEffect(()=>{
-    fetchMovies(page)
-    window.scrollTo(0,0)
-  },[page])
+
 
   return (
     <div className="App">
@@ -59,7 +69,7 @@ function App() {
           <Home reviews={reviews}/>
         </Route>
         <Route exact path="/">
-          {selectedMovie? <ReviewForm exact path="/Movies/ReviewForm" selectedMovie={selectedMovie} setSelectedMovie={setSelectedMovie}/>:undefined}
+          {/* {selectedMovie? <ReviewForm exact path="/Movies/ReviewForm" selectedMovie={selectedMovie} setSelectedMovie={setSelectedMovie}/>:undefined} */}
           <Movies 
             page={page}
             movies={movies}

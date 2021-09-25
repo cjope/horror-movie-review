@@ -98,7 +98,17 @@ body {
   color: orange;
   font-family: papyrus;
   background-color: black;
-  margin: 2%;
+  margin: 1%;
+  height:40px;
+}
+
+.search{
+  color: orange;
+  font-family: papyrus;
+  background-color: black;
+  margin: 1%;
+  width:30%;
+  height: 40px;
 }
 
 .button:hover{
