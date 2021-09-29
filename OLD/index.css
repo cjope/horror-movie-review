@@ -7,110 +7,56 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: black;
   color: orange;
-  /* font-family: "papyrus"; */
-  /* background: black!important; */
+  font-family: "papyrus";
+  width:80%;
 }
-
-
-
-.title{
-    color: orange;
-    font-family: papyrus;
-    background-color: black;
-    /* position:absolute; */
-    top: 0;
-    left: 50%;
-    width:100%;
-    padding-left: 39%;
-}
-
-.App{
-  background-color: black;
-  background: black;
-}
-
-.movies{
-  background-color: black;
-  display: flex;
-  justify-content: center;
- } 
 
 .nav-all{
   padding:1%;
   display:flex;
+  border-bottom: 1px solid darkorange;
   position: sticky;
   top:0;
   background-color: black;
-  z-index: 1;
-  color: orange;
+  cursor: pointer;
+  /* ???? */
 }
 
 .nav-bar {
   margin: 2%;
   padding-left: 1%;
   padding-right: 1%;
-  margin: 3%;
   text-align: center;
   color: white;
   border-left: 6px solid darkorange;
   text-decoration: none;
   background-color: black;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-.page-nav{
-  display:flex;
-  flex: 1;
-  padding-right: 10%;
-  flex-direction: row;
-  justify-content: center;
-  text-align: center;
-  margin-top: 1%;
-  position: fixed;
-  z-index: 1;
-  top: 10%;
-  left:0%;
-  width: 100%;
-  height:5%;
-  size: inherit;
-}
-.page-button{
-  margin:2%;
-  padding-inline:10%;
-  height: 100%;
-  text-align: center;
-  cursor: pointer;
-  align-content: inherit;
-  color: orange;
-  background-color: black;
-  font-size: 20px;
 }
 
 .movie-card{
-  background-color: black;
-  text-align: center;
+  border-style: solid;
+  border-color: orange;
+  border-style: groove;
+  margin:2%;
 }
 
-
-
-
-.movie-card:hover{
-  box-shadow:
-    0 0 50px #fff,
-    -10px 0 80px orange,
-    10px 0 80px rgb(245, 205, 130);
-  cursor: pointer;
+.review-card{
+  border-style: solid;
+  border-color: orange;
+  border-style: groove;
+  margin:2%;
+  background-color: rgb(36, 36, 35) ;
+  width:auto;
+  height: auto;
+  border-radius: 15px;
+  padding:0;
+  display: block;
+  overflow: hidden;
 }
-
-.movie-card-poster{
-  margin: auto;
-  height: 50vh;
-  width: 100%;
-
-
+.review-card:focus{
+  width: 200%;
+  margin:auto;
 }
-
 
 .pumpkin-light{
   width: 4%;
@@ -121,30 +67,41 @@ body {
   opacity: .3;
 }
 
-.movie-card-review{
-  width: 100%;
-  height:50vh;
-  /* text-align: left; */
-  background: black;
-  color: white;
+.movie-card:hover{
+  box-shadow:
+    0 0 50px #fff,
+    -10px 0 80px orange,
+    10px 0 80px rgb(245, 205, 130);
+    
 }
 
+.movie-card-title{
+  padding-top: 2%;
+}
 
+.movie-card-poster{
+  width:60%;
+}
+
+.movie-card-overview{
+  margin: auto;
+  width: 80%;
+}
+
+.movie-card-review{
+  margin:2%;
+  padding: 2em;
+  padding-inline: 5em;
+  background-color: black;
+  color: orange;
+}
 
 .button{
   color: orange;
-  /* font-family: papyrus; */
+  font-family: papyrus;
   background-color: black;
+  margin: 1%;
   height:40px;
-  position:absolute;
-  top: 96%;
-  /* bottom:-3%; */
-  left: 50%;
-  width:100%;
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%, -50%);
-  cursor: pointer;
-  overflow: none;
 }
 
 .search{
@@ -155,14 +112,14 @@ body {
   width:30%;
   height: 40px;
 }
-/* 
+
 .button:hover{
   transform: scale(1.05);
   cursor:pointer;
-} */
+}
 
 .review-title{
-  /* margin-right: 2px; */
+  margin-right: 2px;
   background-color: black;
   color:orange;
   font-family: papyrus;
