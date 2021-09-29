@@ -59,7 +59,7 @@ function MovieCard({movie}){
                     </div>
                     <br style={{backgroundColor:"blue"}}/>
                     <div style={{backgroundColor:"red"}} >
-                        <Button type="button" onClick={{handleClick}}>Submit</Button>
+                        <Button type="button" onClick={handleClick}>Submit</Button>
                         {/* this doesn't work - maybe use a UseEffect here? */}
                     </div>
                 </div>

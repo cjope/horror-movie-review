@@ -59,6 +59,7 @@ function Movies(){
                 <form className="page-button" onSubmit={handleSearch}>
                     <input style={{height:"90%", width:"250%"}} onChange={handleSearchText} placeholder="search" type="text"></input>
                 </form>
+                
             </div>
             <Grid style={{display:"flex", justifyContent:"center"}} >
                     {listMovies}
