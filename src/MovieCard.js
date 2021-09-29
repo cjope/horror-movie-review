@@ -55,12 +55,14 @@ function MovieCard({movie}){
                 </div>:
                 <div className="movie-card-review" >
                     <div className="movie-card-review">
-                        <TextArea type="text" placeholder="Write a Review!" className="movie-card-review"/>
+
+                        <TextArea type="text" placeholder={`Write a Review for ${movie.title}!`} className="movie-card-review"/>
+
                     </div>
-                    <br style={{backgroundColor:"blue"}}/>
-                    <div style={{backgroundColor:"red"}} >
-                        <Button type="button" onClick={handleClick}>Submit</Button>
-                        {/* this doesn't work - maybe use a UseEffect here? */}
+                    <button type="button" onClick={handleClick} className="review-cancel" >X</button>
+                    <button type="button" onClick={handleClick} className="review-submit">Submit</button>
+                    <div>
+
                     </div>
                 </div>
                 }
