@@ -43,11 +43,9 @@ function MovieCard({movie}){
             //change card to the other 
         }
 
-    // console.log(movieTitle)
 
     return(
         <div style={{backgroundColor:"black", paddingTop:"10%"}}>
-                {movie.genre_ids.includes(27)&&movie.poster_path!==null? 
             <Card >
                 {!isFlipped?
                 <div  className="movie-card" >
@@ -67,8 +65,6 @@ function MovieCard({movie}){
                 </div>
                 }
             </Card>
-            :null
-        }
         </div>
     )
 }

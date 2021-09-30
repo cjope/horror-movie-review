@@ -128,7 +128,9 @@ body {
   height:12%
 }
 
-
+.null{
+  position:fixed;
+}
 
 .pumpkin-light{
   width: 4%;

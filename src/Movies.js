@@ -46,10 +46,12 @@ function Movies(){
     
       function handleSearchText(e){
           setSearchText(e.target.value)
+          const moviesToDisplay = movieData.filter((film)=>(film.title.toLowerCase().includes(searchText.toLowerCase())))
           e.target.value!==""?setSearchText(e.target.value):setSearchQuery("")
       }
+      
 
-    const listMovies = movieData.map(movie => <MovieCard key = {movie.id} movie = {movie}/>)
+    const listMovies = movieData.map(movie => movie.genre_ids.includes(27)? <MovieCard key = {movie.id} movie = {movie}/>:null)
 
     return(
         <div >
