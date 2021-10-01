@@ -3,14 +3,11 @@ import NavButtons from "./NavButtons"
 
 function NavBar(){
     return(
-        <div className="nav-all">
-            <div className="nav-all" style={{display:"flex", flex:5}}>
-                <NavLink className="nav-bar" to="/Reviews">Reviews</NavLink>
-                <NavLink className="nav-bar" to="/">Browse</NavLink>
-                <NavButtons className="nav-bar"/>
-                <h1 className="title" style={{fontSize:"50px"}}>HorroReview</h1>
-            </div>
-
+        <div className="nav-bar">
+                <NavLink className="nav-link" to="/Reviews">Reviews</NavLink>
+                <NavLink className="nav-link" to="/">Browse</NavLink>
+                <NavButtons/>
+                <h1 className="nav-title">HorroReview</h1>
         </div>
     )
 }

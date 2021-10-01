@@ -11,17 +11,12 @@ function Movies(){
     const [searchQuery, setSearchQuery] = useState("")
     const [searchText, setSearchText] = useState("")
 
-
-    function fetchMovies() {
-        fetch(`${browseURL}${page}`)
-        .then(res => res.json())
-        .then(data => setMovieData(data.results))
-    }
-
-    
+ 
     useEffect(() => {
         if(searchQuery === "") {
-            fetchMovies()
+            fetch(`${browseURL}${page}`)
+            .then(res => res.json())
+            .then(data => setMovieData(data.results))
         }
         else{
             return(
@@ -30,34 +25,12 @@ function Movies(){
                 .then(data => setMovieData(data.results))
             )
         }
-    },[searchQuery, page  ])
+    },[searchQuery, page, browseURL])
 
     function handleSearch(e){
         e.preventDefault()
         setSearchQuery(searchText)
     }
-
-    // const [randomMovie, setRandomMovie]=useState("")
-
-    // function handleRando(movieData, randomMovie){
-    //     Math.floor(Math.random)
-    //     movieData.map((movie)=>(
-    //         randomMovie===movie.id? setSearchQuery(movie.title): console.log(randomMovie)
-    //     ))
-    // }
-
-
-
-    // function handleRandomMovie(max){
-    //     Math.floor(Math.random())
-    //     fetch("https://api.themoviedb.org/3/find/tt0087015?api_key=058b20ba9bda19035670479e41a673af&external_source=imdb_id")
-    //     .then(res=>res.json())
-    //     .then(data=>setRandomMovie(data.movie_results))
-    //     handleRando()
-    // }
-
-    
-    // console.log(randomMovie[0].title)
 
     function handlePreviousPage(){
     page===1? setPage(1): setPage(page-1)
@@ -73,28 +46,22 @@ function Movies(){
         e.target.value!==""?setSearchText(e.target.value):setSearchQuery("")
     }
 
-    
-
-
-
-    const listMovies = movieData.map(movie => movie.genre_ids.includes(27)&&movie.poster_path!==null? <MovieCard key = {movie.id} movie = {movie}/>:null)
+    const listMovies = movieData.map(movie => movie.genre_ids.includes(27)&&movie.poster_path!==null? <MovieCard key = {movie.id} movie = {movie} isFlipped={false} />:null)
 
     return(
-        <div style={{paddingBottom:"10%"}}>
-            <div className="page-nav">
-                <button className="page-button" onClick={handlePreviousPage} >Prev</button>
-                <button className="page-button" onClick={handleNextPage} >Next</button>
-                {/* <button onClick={handleRando}>Random Movie</button> */}
-                <form className="search" onSubmit={handleSearch}>
-                    <input className="search" style={{height:"90%", width:"250%"}} onChange={handleSearchText} placeholder="search" type="text"></input>
+        <div className="movies-all">
+            <div className="movies-nav">
+                    <button className="button" onClick={handlePreviousPage} >Prev</button>
+                    <button className="button" onClick={handleNextPage} >Next</button>
+                <form className="search-form" onSubmit={handleSearch}>
+                    <input className="search" onChange={handleSearchText} placeholder="search" type="text"></input>
                 </form>
-                
             </div>
-            <div style={{paddingTop:"5%"}}>
-            <Grid style={{display:"flex", justifyContent:"center"}} >
+            {/* <div classname="movie-container"> */}
+            <Grid className="movie-container" >
                     {listMovies}
             </Grid>
-            </div>
+            {/* </div> */}
         </div>
 
     )

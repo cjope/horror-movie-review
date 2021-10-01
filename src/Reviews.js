@@ -1,13 +1,9 @@
 import { useEffect, useState } from "react"
-import { Card, Grid } from "semantic-ui-react"
 import ReviewCard from "./ReviewCard"
-
+import { Grid } from "semantic-ui-react"
 
 function Reviews(){
     const [reviews, setReviews]=useState([])
-
-
-
 
     useEffect(()=>{
          fetch("http://localhost:3001/reviews")
@@ -15,15 +11,14 @@ function Reviews(){
         .then(data => setReviews(data))   
     },[])
 
-
     const listReviews = reviews.map((review)=>(<ReviewCard key={review.id} review={review}/> ))
 
-
-
     return(
-                <div >
-                    {listReviews}
-                </div>
+        <div className="reviews">
+        <Grid style={{display:"flex", justifyContent:"center"}} >
+            {listReviews}
+        </Grid>
+        </div>
     )
 }
 export default Reviews

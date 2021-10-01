@@ -6,6 +6,20 @@
       "rating": 8,
       "image": "https://image.tmdb.org/t/p/w500//rRN0pl3UvwiMpG8X1vxB8l7sP3C.jpg",
       "id": 10
+    },
+    {
+      "title": "The Exorcist",
+      "review": "dfsdf",
+      "rating": 5,
+      "image": "https://image.tmdb.org/t/p/w500//xcjJ5khg2yzOa282mza39Lbrm7j.jpg",
+      "id": 11
+    },
+    {
+      "title": "Bride of Chucky",
+      "review": "sds",
+      "rating": 3,
+      "image": "https://image.tmdb.org/t/p/w500//9gDzYmuy4Gait4GgeGiKdh68XvF.jpg",
+      "id": 12
     }
   ]
 }
