@@ -21,6 +21,7 @@ body {
     left: 50%;
     width:100%;
     padding-left: 39%;
+    z-index: 5;
 }
 
 .App{
@@ -40,22 +41,27 @@ body {
   position: sticky;
   top:0;
   background-color: black;
-  z-index: 1;
+  z-index: 5;
   color: orange;
+  padding-bottom: 1%;
 }
 
 .nav-bar {
-  margin: 2%;
   padding-left: 1%;
   padding-right: 1%;
   margin: 3%;
   text-align: center;
   color: white;
   border-left: 6px solid darkorange;
-  text-decoration: none;
-  background-color: black;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 30px;
+  z-index: 5;
+  /* padding-bottom: 5%; */
+}
+
+.nav-bar:hover{
+  color: orange;
+  transform: scale(1.2);
 }
 
 .page-nav{
@@ -67,7 +73,7 @@ body {
   text-align: center;
   margin-top: 1%;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   top: 10%;
   left:0%;
   width: 100%;
@@ -84,52 +90,122 @@ body {
   color: orange;
   background-color: black;
   font-size: 20px;
+  border-radius: 5px;
+}
+
+.review-card{
+  /* width:60%;
+  height:500px; */
+  color:orange;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* padding:5%; */
+  border-color: white;
+  border-style: solid;
+  border-radius: 5px;
+  margin:5%;
+  text-align: center;
+  justify-content: center;
+}
+
+.review-image{
+  width:100%;
+  object-fit: cover;
+  opacity: .08;
+}
+
+.review-title{
+  position: absolute; 
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 100%; 
+  padding: 5%;
+}
+
+.review-review{
+  padding:5%;
+  position: absolute; 
+  left: 0; 
+  right: 0;
+  padding-top: 15%; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 80%; 
+}
+
+.review-rating{
+  padding:5%;
+  position: absolute; 
+  left: 0; 
+  right: 0;
+  padding-top: 10%; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 100%; 
+}
+
+.page-button:hover{
+  transform: scale(1.05);
 }
 
 .movie-card{
   background-color: black;
   text-align: center;
-
+  color: orange;
 }
-
-
-
 
 .movie-card:hover{
   box-shadow:
-    0 0 50px #fff,
-    -10px 0 80px orange,
-    10px 0 80px rgb(245, 205, 130);
+    0 0 5px #fff,
+    -1px 0 8px orange,
+    1px 0 8px rgb(245, 205, 130);
   cursor: pointer;
+  transform: scale(1.05);
 }
 
 .movie-card-poster{
   margin: auto;
   height: 50vh;
   width: 100%;
+  border-radius: 5px;
 }
 
-
 .review-cancel{
-  width:25px;
+  width:40px;
+  height: 40px;
   background: black;
   color:orange;
   position:absolute;
-  top:1%;
-  right:2.5%;
+  top:0%;
+  right:2%;
+  border-radius: 100%;
+  text-align: center;
+  opacity: .5;
+}
+
+.review-cancel:hover{
+  opacity: 1;
+  cursor: pointer;
 }
 
 .review-submit{
-  background: orange;
+  background: black;
+  color: orange;
+  border-radius: 50px;
   position: absolute;
-  bottom:.2%;
+  bottom:2%;
   width:95%;
   right:2.5%;
-  height:12%
+  height:10%;
+  opacity: .5;
 }
 
-.null{
-  position:fixed;
+.review-submit:hover{
+  opacity: 1;
+  cursor: pointer;
+  
 }
 
 .pumpkin-light{
@@ -144,23 +220,45 @@ body {
 .movie-card-review{
   width: 100%;
   height:50.5vh;
-  /* text-align: left; */
+  background: black;
+  color: white;
+  resize: none;
+  font-size: large;
+
+}
+
+textarea{
+  box-sizing: border-box;
+  padding-top: 20%;
+  padding-left: 5%;
+  padding-right: 5%;
+  border-color:orange;
+  transform: scale(1.05);
+  border-radius: 5px;
+  box-shadow:
+  0 0 5px #fff,
+  -1px 0 8px orange,
+  1px 0 8px rgb(245, 205, 130);
+}
+
+.movie-card-text{
+  margin:auto;
+  height:50.5vh;
+  text-align: left;
   background: black;
   color: white;
   border-style:ridge;
   border-color: orange;
+  resize: none;
+  font-size: large;
 }
-
-
 
 .button{
   color: orange;
-  /* font-family: papyrus; */
   background-color: black;
   height:40px;
   position:absolute;
   top: 96%;
-  /* bottom:-3%; */
   left: 50%;
   width:100%;
   transform: translate(-50%,-50%);
@@ -170,50 +268,15 @@ body {
 }
 
 .search{
+  margin:2%;
+  padding-inline:10%;
+  height: 100%;
+  text-align: left;
+  align-content: inherit;
   color: orange;
-  font-family: papyrus;
   background-color: black;
-  margin: 1%;
-  width:30%;
-  height: 40px;
-}
-/* 
-.button:hover{
-  transform: scale(1.05);
-  cursor:pointer;
-} */
-
-.review-title{
-  /* margin-right: 2px; */
-  background-color: black;
-  color:orange;
-  font-family: papyrus;
-  border-color: rgb(15, 15, 15);
-}
-
-.review-input{
-  margin:auto;
-  background-color: white;
-  width:60%;
-  height:100px;
-  color:orange;
-}
-
-.review-form{
-  border: orange;
-  border-style: solid;
-  width: 75%;
-  position: fixed;
-  left: 50%;
-  margin-left: -37.5%;
-  margin-top: 10%;
-  background-color: rgb(46, 46, 46);
-  box-shadow:
-  0 0 50px #fff,
-  -10px 0 80px orange,
-  10px 0 80px rgb(245, 205, 130);
-  opacity: 1;
-  z-index: 10;
+  font-size: 20px;
+  border-radius: 5px;
 }
 
 /*site css*/
@@ -221,11 +284,14 @@ body {
   font-size: 0;
   white-space: nowrap;
   display: inline-block;
-  width: 500px;
-  height: 100px;
+  width: 200px;
+  height: 40px;
   overflow: hidden;
-  position: relative;
+  position: absolute;
   background-size: contain;
+  top:0%;
+  left:5%;
+  /* right:15% */
 }
 .star-rating i {
   opacity: 0;

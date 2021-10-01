@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import MovieCard from "./MovieCard"
-// import { Card, CardGroup, Container } from "semantic-ui-react"
 import { Grid } from "semantic-ui-react"
 
 
@@ -12,15 +11,17 @@ function Movies(){
     const [searchQuery, setSearchQuery] = useState("")
     const [searchText, setSearchText] = useState("")
 
-    const fetchMovies = () => {
+
+    function fetchMovies() {
         fetch(`${browseURL}${page}`)
         .then(res => res.json())
         .then(data => setMovieData(data.results))
     }
 
+    
     useEffect(() => {
         if(searchQuery === "") {
-                fetchMovies(page)
+            fetchMovies()
         }
         else{
             return(
@@ -29,43 +30,71 @@ function Movies(){
                 .then(data => setMovieData(data.results))
             )
         }
-    },[searchQuery, page, searchText])
+    },[searchQuery, page  ])
 
     function handleSearch(e){
         e.preventDefault()
         setSearchQuery(searchText)
     }
 
-      function handlePreviousPage(){
-        page===1? setPage(1): setPage(page-1)
-      }
-    
-      function handleNextPage(){
-        setPage(page+1)
-      }
-    
-      function handleSearchText(e){
-          setSearchText(e.target.value)
-          const moviesToDisplay = movieData.filter((film)=>(film.title.toLowerCase().includes(searchText.toLowerCase())))
-          e.target.value!==""?setSearchText(e.target.value):setSearchQuery("")
-      }
-      
+    // const [randomMovie, setRandomMovie]=useState("")
 
-    const listMovies = movieData.map(movie => movie.genre_ids.includes(27)? <MovieCard key = {movie.id} movie = {movie}/>:null)
+    // function handleRando(movieData, randomMovie){
+    //     Math.floor(Math.random)
+    //     movieData.map((movie)=>(
+    //         randomMovie===movie.id? setSearchQuery(movie.title): console.log(randomMovie)
+    //     ))
+    // }
+
+
+
+    // function handleRandomMovie(max){
+    //     Math.floor(Math.random())
+    //     fetch("https://api.themoviedb.org/3/find/tt0087015?api_key=058b20ba9bda19035670479e41a673af&external_source=imdb_id")
+    //     .then(res=>res.json())
+    //     .then(data=>setRandomMovie(data.movie_results))
+    //     handleRando()
+    // }
+
+    
+    // console.log(randomMovie[0].title)
+
+    function handlePreviousPage(){
+    page===1? setPage(1): setPage(page-1)
+    }
+
+    function handleNextPage(){
+    setPage(page+1)
+    }
+
+    function handleSearchText(e){
+        setSearchText(e.target.value)
+    //   const moviesToDisplay = movieData.filter((film)=>(film.title.toLowerCase().includes(searchText.toLowerCase()))) this works great but where do I put it??
+        e.target.value!==""?setSearchText(e.target.value):setSearchQuery("")
+    }
+
+    
+
+
+
+    const listMovies = movieData.map(movie => movie.genre_ids.includes(27)&&movie.poster_path!==null? <MovieCard key = {movie.id} movie = {movie}/>:null)
 
     return(
-        <div >
+        <div style={{paddingBottom:"10%"}}>
             <div className="page-nav">
                 <button className="page-button" onClick={handlePreviousPage} >Prev</button>
                 <button className="page-button" onClick={handleNextPage} >Next</button>
-                <form className="page-button" onSubmit={handleSearch}>
-                    <input style={{height:"90%", width:"250%"}} onChange={handleSearchText} placeholder="search" type="text"></input>
+                {/* <button onClick={handleRando}>Random Movie</button> */}
+                <form className="search" onSubmit={handleSearch}>
+                    <input className="search" style={{height:"90%", width:"250%"}} onChange={handleSearchText} placeholder="search" type="text"></input>
                 </form>
                 
             </div>
+            <div style={{paddingTop:"5%"}}>
             <Grid style={{display:"flex", justifyContent:"center"}} >
                     {listMovies}
             </Grid>
+            </div>
         </div>
 
     )

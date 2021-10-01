@@ -1,24 +1,24 @@
 {
-  "REVIEWS": [
+  "reviews": [
     {
       "title": "Evil Dead",
       "review": "Test Review Text src/db.json",
-      "likes": 8
+      "rating": 8
     },
     {
       "title": "They Live",
       "review": "A must-see! As a custruction worker, I think it's well known how hard the labor can be and the toll on your body is sometimes not worth the risk. What isn't talked about is PPE on the jobsite and how often coworkers turn a blind eye to someone not wearing protective eyewear. The length that Mr. Piper goes through to ensure his fellow peer is following OSHA standards is commendable and this film had the guts to take a stand on unsafe work standards!",
-      "likes": 8
+      "rating": 8
     },
     {
       "title": "Hotel Transylvania",
       "review": "It STINKS!",
-      "likes": 2
+      "rating": 2
     },
     {
       "title": "Rosemary's Baby",
       "review": "An outstanding classic of newlywed couple in a new neighborhood experiencing an unexpected baby on the way. Lucky for them, they are surrounded by helpful neighbors to lend a hand in raising the child!",
-      "likes": 8
+      "rating": 8
     }
   ]
 }
