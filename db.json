@@ -13,6 +13,34 @@
       "rating": 7,
       "image": "https://image.tmdb.org/t/p/w500//wDnVnnCiavROZ2YeVqSPwFw5jec.jpg",
       "id": 11
+    },
+    {
+      "title": "The Thing",
+      "review": "This is a test on the deployed app. IS IT WORKING?!",
+      "rating": 5,
+      "image": "https://image.tmdb.org/t/p/w500//fOl0FJ81VoQU0BlRgXA3aVeNlXE.jpg",
+      "id": 12
+    },
+    {
+      "title": "Frankenhooker",
+      "review": "IT'S ALIIIIIVE!!!",
+      "rating": 5,
+      "image": "https://image.tmdb.org/t/p/w500//iI6ZLVZHAgEsGcxUO7t00bHS6tO.jpg",
+      "id": 13
+    },
+    {
+      "title": "Leprechaun",
+      "review": "Test",
+      "rating": 4,
+      "image": "https://image.tmdb.org/t/p/w500//qkBWIZRaeMByMkoby48o71zYyA7.jpg",
+      "id": 14
+    },
+    {
+      "title": "Leprechaun",
+      "review": "fdf",
+      "rating": 0,
+      "image": "https://image.tmdb.org/t/p/w500//qkBWIZRaeMByMkoby48o71zYyA7.jpg",
+      "id": 15
     }
   ]
 }
