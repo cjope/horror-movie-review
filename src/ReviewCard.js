@@ -1,7 +1,8 @@
-function ReviewCard({review}){
+function ReviewCard({review, onDeleteReview}){
     const voteAverage = review.rating
     const p1 = <img className="pumpkin-light" alt="pumpkin-light" src="https://d29fhpw069ctt2.cloudfront.net/icon/image/85188/preview.svg"></img>
     const p0 = <img className="pumpkin-dark" alt="pumpkin-dark" src="https://d29fhpw069ctt2.cloudfront.net/icon/image/85188/preview.svg"></img>
+    const {id} = review
 
     function voteToStars(){
         if (voteAverage <3) return <>{p1}{p0}{p0}{p0}{p0}</>
@@ -12,20 +13,24 @@ function ReviewCard({review}){
         else return <>{p0}{p0}{p0}{p0}{p0}</>
         }    
 
-        function handleDelete(){
-            // console.log(`Remove id:${review.id}, title:${review.title}, review:${review.review}, rating:${review.rating}`)
-            console.log("Delete:", review)
-        }
+        function onDeleteClick(){
+            fetch(`http://localhost:3001/reviewArray/${id}`,{
+                method: "DELETE",
+        })
+            .then(res=>res.json())
+            .then(()=>onDeleteReview(review))
+        }   
+
 
     return(
-        <div className="review-card">
-                <img className="review-card-image"  src={review.image} alt={review.title}/>
+        <div className="rc">
+                <img className="rc-image"  src={review.image} alt={review.title}/>
                 <div >
-                    <h1 className="review-card-title" key={review.id}>{review.title}</h1>
-                    <div className="review-card-rating" >{voteToStars(voteAverage)}</div>
+                    <h1 className="rc-title" key={review.id}>{review.title}</h1>
+                    <div className="rc-rating" >{voteToStars(voteAverage)}</div>
                 </div>
-                <h2 className="review-card-review" >"{review.review}"</h2>
-                <button type="button" onClick={handleDelete} className="review-delete" >X</button>
+                <h2 className="rc-review" >"{review.reviewText}"</h2>
+                <button type="button" onClick={onDeleteClick} className="rc-delete" >X</button>
         </div>
     )
 }

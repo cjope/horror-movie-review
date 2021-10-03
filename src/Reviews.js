@@ -6,12 +6,17 @@ function Reviews(){
     const [reviews, setReviews]=useState([])
 
     useEffect(()=>{
-         fetch("http://localhost:3001/reviews")
+         fetch("http://localhost:3001/reviewArray")
         .then(res=>res.json())
         .then(data => setReviews(data))   
-    },[])
+    },[reviews])
 
-    const listReviews = reviews.map((review)=>(<ReviewCard key={review.id} review={review}/> ))
+    function handleDeleteReview(){
+        const updatedReviews = reviews.filter((review)=>review.id)
+        setReviews(updatedReviews)
+    }
+
+    const listReviews = reviews.map((review)=>(<ReviewCard key={review.id} review={review} onDeleteReview={handleDeleteReview}/> ))
 
     return(
         <div className="reviews">

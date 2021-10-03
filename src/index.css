@@ -8,7 +8,6 @@ body {
 }
 
 /* NAVBAR */
-
 .nav-bar{
   display:flex;
   flex:5;
@@ -27,18 +26,11 @@ body {
   margin-top: 2%;
   height:38px;
 }
-
-.active {
+.nav-link:hover{
   color: orange;
   transform: scale(1.2);
 }
-
-
-
-
-
-
-.nav-link:hover{
+.active {
   color: orange;
   transform: scale(1.2);
 }
@@ -53,23 +45,16 @@ body {
     cursor: pointer;
     margin-top: 2%;
 }
-
 .nav-title:hover{
   color: orange;
 }
 
-
-
-
-
-
 /* REVIEWS */
-
 .reviews{
   padding:5%;
 }
 
-.review-card{
+.rc{
   display: flex;
   border-color: orange;
   border-style: solid;
@@ -77,24 +62,15 @@ body {
   margin-bottom: 2%;
   width: 100%;
   height: 100%;
-  /* opacity: .5; */
-/* } */
-
-/* .review-card:hover{ */
-  opacity: 1;
 }
-
-
-
-.review-card-image{
+.rc-image{
   margin-top: 1%;
   margin-bottom: 1%;
   border-radius: 10px;
   resize: none;
   height: 100%;
 }
-
-.review-card-title{ 
+.rc-title{ 
   color: orange;
   text-align: center;
   font-size: auto;
@@ -102,28 +78,23 @@ body {
   cursor:default;
   font-size: 3em;
 }
-
-.review-card-review{
+.rc-review{
   color: orange;
   width: 100%;
   cursor: default;
 }
-
-.review-card-rating{
+.rc-rating{
   display: flex;
   justify-content: center;
 }
-
 .pumpkin-light{
   width: 15%;
 }
-
 .pumpkin-dark{
   width:15%;
   opacity: .3;
 }
-
-.review-delete{
+.rc-delete{
   height: 38px;
   width: 38px;
   background: transparent;
@@ -135,37 +106,30 @@ body {
   opacity: .5;
   margin-top: .1%;
 }
-
-.review-delete:hover{
+.rc-delete:hover{
   opacity: 1;
   cursor: pointer;
   border-color: orange;
 }
 
-
 /* MOVIES */
-
-/* prev/next buttons */
-
-
 .movies-all{
   background-color: black;
   padding-top: 5%;
 }
-
+/* MAKE OWN COMPONENT @APP */
+/* prev/next buttons */
 .movies-nav{
   background-color:black;
   position:fixed;
   width: 100%;
   z-index: 5;
-  top:7%;
+  top:6%;
   display: flex;
   padding-bottom: 1%;
   padding-top: 1%;
   height: fit-content;
 }
-
-
 .button{
   color: orange;
   cursor: pointer;
@@ -175,13 +139,11 @@ body {
   background-color: black;
   border-radius: 10px;
 }
-
+/* search bar */
 .search-form{
   flex: 3;
   display: flex;
-  /* justify-content: end; */
   flex-direction: row-reverse;
-
 }
 .search{
   text-align: left;
@@ -193,17 +155,15 @@ body {
   margin-right: 9%;
 }
 
-
 .movie-container{
   justify-content: center;
 }
 
-
-.movie-card{
+/* MovieCard */
+.mc{
   background-color: black;
 }
-
-.movie-card:hover{
+.mc:hover{
   box-shadow:
     0 0 5px #fff,
     -1px 0 8px orange,
@@ -211,58 +171,22 @@ body {
   cursor: pointer;
   transform: scale(1.05);
 }
-
-.movie-card-poster{
+.mc-poster{
   height: 100%;
   width: 100%;
   border-radius: 5px;
 }
 
-.review-cancel{
-  width:40px;
-  height: 40px;
-  background: transparent;
-  color:orange;
-  position:absolute;
-  top:0%;
-  right:2%;
-  border-radius: 100%;
-  opacity: .5;
-}
-
-.review-cancel:hover{
-  opacity: 1;
-  cursor: pointer;
-}
-
-.review-submit{
-  background: transparent;
-  color: orange;
-  border-radius: 50px;
-  position: absolute;
-  bottom:2%;
-  width:95%;
-  right:2.5%;
-  height:10%;
-  opacity: .5;
-}
-
-.review-submit:hover{
-  opacity: 1;
-  cursor: pointer;
-  
-}
-
-.movie-card-review{
+/* MovieCard (review input) reviewText*/
+/* MAKE OWN COMPONENT @MovieCard */
+.mcr{
   width: 100%;
   height: 98%;
   background: black;
   color: white;
   resize: none;
   font-size: large;
-
 }
-
 textarea{
   box-sizing: border-box;
   padding-top: 20%;
@@ -276,8 +200,7 @@ textarea{
   -1px 0 8px orange,
   1px 0 8px rgb(245, 205, 130);
 }
-
-.movie-card-text{
+.mcr-text{
   margin:auto;
   height:42vh;
   text-align: left;
@@ -285,13 +208,46 @@ textarea{
   resize: none;
   font-size: large;
 }
+.mcr-cancel{
+  width:40px;
+  height: 40px;
+  background: transparent;
+  color:orange;
+  position:absolute;
+  top:0%;
+  right:2%;
+  border-radius: 100%;
+  opacity: .5;
+}
+.mcr-cancel:hover{
+  opacity: 1;
+  cursor: pointer;
+}
+.mcr-submit{
+  background: transparent;
+  color: orange;
+  border-radius: 50px;
+  position: absolute;
+  bottom:2%;
+  width:95%;
+  right:2.5%;
+  height:10%;
+  opacity: .5;
+}
+.mcr-submit:hover{
+  opacity: 1;
+  cursor: pointer;
+  
+}
 
+/* Own Component or @App */
 .pumpkin-rating {
   width: 200px;
   height: 40px;
   position: absolute;
   left:5%;
 }
+/* background */
 .pumpkin-rating i {
   opacity: 0;
   position: absolute;
@@ -301,6 +257,7 @@ textarea{
   z-index: 1;
   background: url("https://d29fhpw069ctt2.cloudfront.net/icon/image/85188/preview.svg");
 }
+/* 1 pumpkin */
 .pumpkin-rating input {
   -webkit-appearance: none;
   width: 20%;
@@ -309,8 +266,8 @@ textarea{
   position: relative;
   cursor: pointer;
 }
+/* opacity and visibility for each rating */
 .pumpkin-rating input:hover + i,
-
 .pumpkin-rating input:checked + i {
   opacity: 1;
 }

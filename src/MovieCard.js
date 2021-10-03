@@ -9,10 +9,6 @@ function MovieCard({movie}){
     const [rating, setRating]=useState(0)
     let history=useHistory()
 
-    // function navToReviews(){
-    //     setIsFlipped(false)
-    //     history.push("/Reviews")
-    // }
 
     function handleClick(){
         !isFlipped?setIsFlipped(true):setIsFlipped(false)
@@ -23,11 +19,11 @@ function MovieCard({movie}){
     function submitReview(e){
         const newReview={
                 title: movie.title,
-                review: reviewText,
+                reviewText: reviewText,
                 rating: rating,
                 image: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
         }
-        fetch("http://localhost:3001/reviews",{ 
+        fetch("http://localhost:3001/reviewArray",{ 
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -36,29 +32,18 @@ function MovieCard({movie}){
         })
         .then(res=>res.json())
         setIsFlipped(false)
-        history.push("./Movies")
+        history.push("./Reviews") //niiice!
         }
-
-
-    //     <Alert key={idx} variant={variant}>
-    // See {' '}
-    // <Alert.Link href="./Reviews">your reviews</Alert.Link> or <Alert.Link href="./Reviews">continue Browsing</Alert.Link> or 
-    // </Alert>  
-    // <Button onClick={() => setShow(false)} variant="outline-success">
-    // Close me y'all!
-    // </Button>
-
-
 
     return(
         <div style={{backgroundColor:"black", padding:"2%", width:"45ch"}}>
             <Card>
                 {!isFlipped?
-                <div onClick={handleClick} className="movie-card" >
-                    <img className="movie-card-poster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title}>{movie.poster_url}</img>
+                <div onClick={handleClick} className="mc" >
+                    <img className="mc-poster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title}>{movie.poster_url}</img>
                 </div>:
                //this should be its own component>>
-               <div className="movie-card-review" >
+               <div className="mcr" >
                     <span className="pumpkin-rating">
                         <input type="radio" name="rating" value="1" onClick={()=>setRating(1)}/><i></i>
                         <input type="radio" name="rating" value="2"onClick={()=>setRating(2)}/><i></i>
@@ -67,12 +52,12 @@ function MovieCard({movie}){
                         <input type="radio" name="rating" value="5"onClick={()=>setRating(5)}/><i></i>
                     </span>
                     <div >
-                        <div className="movie-card-text" >
-                            <TextArea type="text" placeholder={`Write a Review for ${movie.title}!`} className="movie-card-review" onChange={(e)=>setReviewText(e.target.value)}/>
+                        <div className="mcr-text" >
+                            <TextArea type="text" placeholder={`Write a Review for ${movie.title}!`} className="mcr" onChange={(e)=>setReviewText(e.target.value)}/>
                         </div>        
                     </div>
-                        <button type="button" onClick={handleClick} className="review-cancel" >X</button>
-                        <button type="button" onClick={submitReview} className="review-submit">Submit</button>
+                        <button type="button" onClick={handleClick} className="mcr-cancel" >X</button>
+                        <button type="button" onClick={submitReview} className="mcr-submit">Submit</button>
                         <p style={{position:"absolute", bottom:"15%", right:0, opacity:.5}}>{reviewText.length}/400</p>
                 </div>
                 }

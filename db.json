@@ -1,25 +1,11 @@
 {
-  "reviews": [
+  "reviewArray": [
     {
       "title": "Rosemary's Baby",
-      "review": "An outstanding classic of newlywed couple in a new neighborhood experiencing an unexpected baby on the way. Lucky for them, they are surrounded by helpful neighbors to lend a hand in raising the child!",
-      "rating": 8,
-      "image": "https://image.tmdb.org/t/p/w500//rRN0pl3UvwiMpG8X1vxB8l7sP3C.jpg",
-      "id": 10
-    },
-    {
-      "title": "Cat's Eye",
-      "review": "A cat that can haunt?!?",
+      "reviewText": "An outstanding classic of newlywed couple in a new neighborhood experiencing an unexpected baby on the way. Lucky for them, they are surrounded by helpful neighbors to lend a hand in raising the child!",
       "rating": 1,
-      "image": "https://image.tmdb.org/t/p/w500//hxUM806p8SeOwdsYamUOrTYc07E.jpg",
-      "id": 11
-    },
-    {
-      "title": "Killer Klowns from Outer Space",
-      "review": "What are you gonna do with those pies, boys?",
-      "rating": 5,
-      "image": "https://image.tmdb.org/t/p/w500//30Z4DjbSJEW9oZv4hAksiAmji7r.jpg",
-      "id": 12
+      "image": "https://image.tmdb.org/t/p/w500//rRN0pl3UvwiMpG8X1vxB8l7sP3C.jpg",
+      "id": 1
     }
   ]
 }
