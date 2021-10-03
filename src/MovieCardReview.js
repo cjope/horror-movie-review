@@ -32,7 +32,7 @@ function MovieCardReview({movie, handleShowInput}){
         }
 
     return(
-        <div className="mcr" >
+        <div>
         <span className="pumpkin-rating">
             <input type="radio" name="rating" value="1" onClick={()=>setRating(1)}/><i></i>
             <input type="radio" name="rating" value="2"onClick={()=>setRating(2)}/><i></i>
@@ -40,14 +40,9 @@ function MovieCardReview({movie, handleShowInput}){
             <input type="radio" name="rating" value="4"onClick={()=>setRating(4)}/><i></i>
             <input type="radio" name="rating" value="5"onClick={()=>setRating(5)}/><i></i>
         </span>
-        <div >
-            <div className="mcr-text" >
-                <TextArea type="text" placeholder={`Write a Review for ${movie.title}!`} className="mcr" onChange={(e)=>setReviewText(e.target.value)}/>
-            </div>        
-        </div>
-            <button type="button" onClick={handleCancel} className="mcr-cancel" >X</button>
-            <button type="button" onClick={submitReview} className="mcr-submit">Submit</button>
-            <p style={{position:"absolute", bottom:"15%", right:0, opacity:.5}}>{reviewText.length}/400</p>
+        <button className="mcr-cancel"  type="button" onClick={handleCancel}>X</button>
+        <TextArea type="text" placeholder={`Write a Review for ${movie.title}!`} onChange={(e)=>setReviewText(e.target.value)}/>
+        <button className="mcr-submit" type="button" onClick={submitReview}>Submit</button>     
     </div>
     )
 }

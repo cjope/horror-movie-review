@@ -12,7 +12,6 @@ function Movies(){
     const [searchQuery, setSearchQuery] = useState("")
     const [searchText, setSearchText] = useState("")
 
- 
     useEffect(() => {
         if(searchQuery === "") {
             fetch(`${browseURL}${page}`)
@@ -28,36 +27,10 @@ function Movies(){
         }
     },[searchQuery, page, browseURL])
 
-    // function handleSearch(e){
-    //     e.preventDefault()
-    //     setSearchQuery(searchText)
-    // }
-
-    // function handlePreviousPage(){
-    // page===1? setPage(1): setPage(page-1)
-    // }
-
-    // function handleNextPage(){
-    // setPage(page+1)
-    // }
-
-    // function handleSearchText(e){
-    //     setSearchText(e.target.value)
-    // //   const moviesToDisplay = movieData.filter((film)=>(film.title.toLowerCase().includes(searchText.toLowerCase()))) this works great but where do I put it??
-    //     e.target.value!==""?setSearchText(e.target.value):setSearchQuery("")
-    // }
-
     const listMovies = movieData.map(movie => movie.genre_ids.includes(27)&&movie.poster_path!==null? <MovieCard key = {movie.id} movie = {movie} isFlipped={false} />:null)
 
     return(
         <div className="movies-all">
-            {/* <div className="movies-nav">
-                    <button className="button" onClick={handlePreviousPage} >Prev</button>
-                    <button className="button" onClick={handleNextPage} >Next</button>
-                <form className="search-form" onSubmit={handleSearch}>
-                    <input className="search" onChange={handleSearchText} placeholder="search" type="text"></input>
-                </form>
-            </div> */}
             <NavButtons
                 setSearchQuery={setSearchQuery}
                 setPage={setPage}
@@ -65,7 +38,7 @@ function Movies(){
                 setSearchText={setSearchText}
                 searchText={searchText}
             />
-            <Grid className="movie-container" >
+            <Grid className="movie-grid" >
                     {listMovies}
             </Grid>
         </div>

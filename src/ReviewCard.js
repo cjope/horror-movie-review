@@ -11,13 +11,11 @@ function ReviewCard({review, onDeleteReview}){
             .then(()=>onDeleteReview(review))
         }   
 
-
     return(
         <div className="rc">
                 <img className="rc-image"  src={review.image} alt={review.title}/>
                 <div >
                     <h1 className="rc-title" key={review.id}>{review.title}</h1>
-                    {/* <div className="rc-rating" >{voteToStars(voteAverage)}</div> */}
                     <div className="rc-rating" ><VoteToStars review={review}/></div>
                 </div>
                 <h2 className="rc-review" >"{review.reviewText}"</h2>

@@ -1,13 +1,13 @@
 body {
   margin: auto;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    sans-serif; */
+  /* -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
 }
 
-/* NAVBAR */
+/* Navbar */
 .nav-bar{
   display:flex;
   flex:5;
@@ -15,16 +15,19 @@ body {
   top:0;
   z-index: 5;
   background-color: black;
+  height: 8vh;
 }
-
+.nav-links {
+  flex: 1;
+  margin: auto;
+  padding-left: 5%;
+}
 .nav-link {
   color: white;
   cursor: pointer;
   font-size: 38px;
   flex: 1;
-  margin-left: 5%;
-  margin-top: 2%;
-  height:38px;
+  padding-left: 5%;
 }
 .nav-link:hover{
   color: orange;
@@ -34,26 +37,67 @@ body {
   color: orange;
   transform: scale(1.2);
 }
-
+.nav-neg{
+  flex: 3;
+  text-align: end;
+  margin: auto;
+}
 .nav-title{
     color: orange;
     font-family: "papyrus";
-    font-size: 50px;
-    flex-grow: 5;
+    font-size: 42px;
     text-align: end;
-    margin-right: 5%;
+    margin-right: 8%;
     cursor: pointer;
-    margin-top: 2%;
+    /* margin-top: 2%; */
+    margin-left: 10%;
 }
 .nav-title:hover{
   color: orange;
 }
 
-/* REVIEWS */
+/* NavButtons */
+.movies-nav{
+  background-color:black;
+  position:fixed;
+  width: 100%;
+  z-index: 5;
+  display: flex;
+  flex: 5;
+  padding-bottom: 1%;
+}
+.buttons{
+  flex: 4;
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 27%;
+  padding-right: 5%;
+}
+.button{
+  color: orange;
+  cursor: pointer;
+  margin-left: 10%;
+  width:50%;
+  background-color: black;
+  border-radius: 10px;
+}
+.search-form{
+  flex: 2;
+  display: flex;
+  flex-direction: row-reverse;
+  padding-right: 6%;
+}
+.search{
+  color: orange;
+  background-color: black;
+  font-size: 20px;
+}
+
+/* Reviews */
 .reviews{
   padding:5%;
 }
-
+/* ReviewCard */
 .rc{
   display: flex;
   border-color: orange;
@@ -112,53 +156,16 @@ body {
   border-color: orange;
 }
 
-/* MOVIES */
-.movies-all{
-  background-color: black;
-  padding-top: 5%;
-}
-/* MAKE OWN COMPONENT @APP */
-/* prev/next buttons */
-.movies-nav{
-  background-color:black;
-  position:fixed;
-  width: 100%;
-  z-index: 5;
-  top:6%;
-  display: flex;
-  padding-bottom: 1%;
-  padding-top: 1%;
-  height: fit-content;
-}
-.button{
-  color: orange;
-  cursor: pointer;
-  margin-left: 5%;
-  width:20%;
-  flex: 1;
-  background-color: black;
-  border-radius: 10px;
-}
-/* search bar */
-.search-form{
-  flex: 3;
-  display: flex;
-  flex-direction: row-reverse;
-}
-.search{
-  text-align: left;
-  color: orange;
-  background-color: black;
-  font-size: 20px;
-  border-radius: 5px;
-  width: 30%;
-  margin-right: 9%;
-}
-
-.movie-container{
+/* Movies */
+.movie-grid{
   justify-content: center;
 }
-
+.movie-container{
+  margin-inline: 1%;
+  margin-top: 5%;
+  min-width:inherit;
+  min-height: 42vh;
+}
 /* MovieCard */
 .mc{
   background-color: black;
@@ -169,7 +176,10 @@ body {
     -1px 0 8px orange,
     1px 0 8px rgb(245, 205, 130);
   cursor: pointer;
-  transform: scale(1.05);
+}
+.mc-container{
+  height: 100%;
+  width: 100%;
 }
 .mc-poster{
   height: 100%;
@@ -177,44 +187,32 @@ body {
   border-radius: 5px;
 }
 
-/* MovieCard (review input) reviewText*/
-/* MAKE OWN COMPONENT @MovieCard */
+/* MovieCardReview*/
 .mcr{
-  width: 100%;
-  height: 98%;
-  background: black;
-  color: white;
-  resize: none;
-  font-size: large;
+  position: relative;
+}
+div.ui.card.mc-container{
+  background-color: black;
 }
 textarea{
-  box-sizing: border-box;
-  padding-top: 20%;
-  padding-left: 5%;
-  padding-right: 5%;
-  border-color:orange;
-  transform: scale(1.05);
-  border-radius: 5px;
-  box-shadow:
-  0 0 5px #fff,
-  -1px 0 8px orange,
-  1px 0 8px rgb(245, 205, 130);
-}
-.mcr-text{
-  margin:auto;
-  height:42vh;
-  text-align: left;
-  color: white;
+  position: absolute;
+  width: 98%;
+  left:1%;
   resize: none;
-  font-size: large;
-}
+  top: 13%;
+  height: 74%;
+  background-color: transparent;
+  border-style: none;
+  outline: none;
+  color: orange;
+} 
 .mcr-cancel{
   width:40px;
   height: 40px;
   background: transparent;
   color:orange;
   position:absolute;
-  top:0%;
+  top:1%;
   right:2%;
   border-radius: 100%;
   opacity: .5;
@@ -222,7 +220,8 @@ textarea{
 .mcr-cancel:hover{
   opacity: 1;
   cursor: pointer;
-}
+  border-color: orange;
+} 
 .mcr-submit{
   background: transparent;
   color: orange;
@@ -237,17 +236,15 @@ textarea{
 .mcr-submit:hover{
   opacity: 1;
   cursor: pointer;
-  
+  border-color: orange;
 }
-
-/* Own Component or @App */
 .pumpkin-rating {
   width: 200px;
   height: 40px;
   position: absolute;
   left:5%;
+  margin-top: 2%;
 }
-/* background */
 .pumpkin-rating i {
   opacity: 0;
   position: absolute;
@@ -257,7 +254,6 @@ textarea{
   z-index: 1;
   background: url("https://d29fhpw069ctt2.cloudfront.net/icon/image/85188/preview.svg");
 }
-/* 1 pumpkin */
 .pumpkin-rating input {
   -webkit-appearance: none;
   width: 20%;
@@ -266,7 +262,6 @@ textarea{
   position: relative;
   cursor: pointer;
 }
-/* opacity and visibility for each rating */
 .pumpkin-rating input:hover + i,
 .pumpkin-rating input:checked + i {
   opacity: 1;
@@ -281,6 +276,6 @@ textarea{
   width: 80%;
 }
 .pumpkin-rating i ~ i ~ i ~ i ~ i {
-  opacity: .1;
+  opacity: .3;
   width: 100%;
 }

@@ -21,8 +21,10 @@ function NavButtons({searchText, setSearchQuery, setPage, page, setSearchText}){
 
     return(
         <div className="movies-nav">
-            <button className="button" onClick={handlePreviousPage} >Prev</button>
-            <button className="button" onClick={handleNextPage} >Next</button>
+            <div className="buttons">
+                <button className="button" onClick={handlePreviousPage} >Prev</button>
+                <button className="button" onClick={handleNextPage} >Next</button>
+            </div>
             <form className="search-form" onSubmit={handleSearch}>
                 <input className="search" onChange={handleSearchText} placeholder="search" type="text"></input>
             </form>
