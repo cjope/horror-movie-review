@@ -33,7 +33,7 @@ function MovieCardReview({movie, handleShowInput}){
 
     return(
         <div>
-        <p className="mcr-movie-name" >{movie.title}</p>
+        <p className="mcr-movie-name-redrum" >{movie.title}</p>
         <span className="pumpkin-rating">
             <input type="radio" name="rating" value="1" onClick={()=>setRating(1)}/><i></i>
             <input type="radio" name="rating" value="2"onClick={()=>setRating(2)}/><i></i>
