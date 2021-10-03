@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useHistory } from "react-router"
 import { Card } from "semantic-ui-react"
 import { TextArea } from "semantic-ui-react"
 
@@ -6,11 +7,17 @@ function MovieCard({movie}){
     const [isFlipped, setIsFlipped]=useState(false)
     const [reviewText, setReviewText]=useState("")
     const [rating, setRating]=useState(0)
+    let history=useHistory()
 
-
+    // function navToReviews(){
+    //     setIsFlipped(false)
+    //     history.push("/Reviews")
+    // }
 
     function handleClick(){
         !isFlipped?setIsFlipped(true):setIsFlipped(false)
+        setReviewText("")
+        setRating(1)
     }
 
     function submitReview(e){
@@ -28,11 +35,23 @@ function MovieCard({movie}){
             body: JSON.stringify(newReview),
         })
         .then(res=>res.json())
+        setIsFlipped(false)
+        history.push("./Movies")
         }
 
 
+    //     <Alert key={idx} variant={variant}>
+    // See {' '}
+    // <Alert.Link href="./Reviews">your reviews</Alert.Link> or <Alert.Link href="./Reviews">continue Browsing</Alert.Link> or 
+    // </Alert>  
+    // <Button onClick={() => setShow(false)} variant="outline-success">
+    // Close me y'all!
+    // </Button>
+
+
+
     return(
-        <div style={{backgroundColor:"black", padding:"1%", height:"50vh"}}>
+        <div style={{backgroundColor:"black", padding:"2%", width:"45ch"}}>
             <Card>
                 {!isFlipped?
                 <div onClick={handleClick} className="movie-card" >
@@ -47,13 +66,14 @@ function MovieCard({movie}){
                         <input type="radio" name="rating" value="4"onClick={()=>setRating(4)}/><i></i>
                         <input type="radio" name="rating" value="5"onClick={()=>setRating(5)}/><i></i>
                     </span>
-                    <div className="movie-card-review">
+                    <div >
                         <div className="movie-card-text" >
                             <TextArea type="text" placeholder={`Write a Review for ${movie.title}!`} className="movie-card-review" onChange={(e)=>setReviewText(e.target.value)}/>
                         </div>        
                     </div>
                         <button type="button" onClick={handleClick} className="review-cancel" >X</button>
                         <button type="button" onClick={submitReview} className="review-submit">Submit</button>
+                        <p style={{position:"absolute", bottom:"15%", right:0, opacity:.5}}>{reviewText.length}/400</p>
                 </div>
                 }
             </Card>

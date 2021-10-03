@@ -12,6 +12,11 @@ function ReviewCard({review}){
         else return <>{p0}{p0}{p0}{p0}{p0}</>
         }    
 
+        function handleDelete(){
+            // console.log(`Remove id:${review.id}, title:${review.title}, review:${review.review}, rating:${review.rating}`)
+            console.log("Delete:", review)
+        }
+
     return(
         <div className="review-card">
                 <img className="review-card-image"  src={review.image} alt={review.title}/>
@@ -20,6 +25,7 @@ function ReviewCard({review}){
                     <div className="review-card-rating" >{voteToStars(voteAverage)}</div>
                 </div>
                 <h2 className="review-card-review" >"{review.review}"</h2>
+                <button type="button" onClick={handleDelete} className="review-delete" >X</button>
         </div>
     )
 }

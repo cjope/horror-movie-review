@@ -7,7 +7,6 @@ import Reviews from "./Reviews"
 function App(){
 
 
-  // console.log(movieTitle)
   return(
     <div className="App">
     <NavBar/>
@@ -15,7 +14,7 @@ function App(){
       <Route exact path = "/Reviews">
         <Reviews/>
       </Route>
-      <Route exact path = "/">
+      <Route exact path = "/Movies">
         <Movies />
       </Route>
     </Switch>

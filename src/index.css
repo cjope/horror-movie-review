@@ -20,15 +20,23 @@ body {
 
 .nav-link {
   color: white;
-  border-left: 6px solid darkorange;
-  border-bottom: 6px solid darkorange;
   cursor: pointer;
-  font-size: 40px;
+  font-size: 38px;
   flex: 1;
   margin-left: 5%;
   margin-top: 2%;
-  height:40px;
+  height:38px;
 }
+
+.active {
+  color: orange;
+  transform: scale(1.2);
+}
+
+
+
+
+
 
 .nav-link:hover{
   color: orange;
@@ -42,9 +50,13 @@ body {
     flex-grow: 5;
     text-align: end;
     margin-right: 5%;
-    cursor: default;
+    cursor: pointer;
+    margin-top: 2%;
 }
 
+.nav-title:hover{
+  color: orange;
+}
 
 
 
@@ -61,13 +73,25 @@ body {
   display: flex;
   border-color: orange;
   border-style: solid;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-bottom: 2%;
+  width: 100%;
+  height: 100%;
+  /* opacity: .5; */
+/* } */
+
+/* .review-card:hover{ */
+  opacity: 1;
 }
 
+
+
 .review-card-image{
-  padding-top: 1%;
-  padding-bottom: 1%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  border-radius: 10px;
+  resize: none;
+  height: 100%;
 }
 
 .review-card-title{ 
@@ -99,6 +123,25 @@ body {
   opacity: .3;
 }
 
+.review-delete{
+  height: 38px;
+  width: 38px;
+  background: transparent;
+  border-color: orange; 
+  color:orange;
+  position:absolute;
+  right:4.5%;
+  border-radius: 100%;
+  opacity: .5;
+  margin-top: .1%;
+}
+
+.review-delete:hover{
+  opacity: 1;
+  cursor: pointer;
+  border-color: orange;
+}
+
 
 /* MOVIES */
 
@@ -115,7 +158,7 @@ body {
   position:fixed;
   width: 100%;
   z-index: 5;
-  top:9%;
+  top:7%;
   display: flex;
   padding-bottom: 1%;
   padding-top: 1%;
@@ -130,13 +173,14 @@ body {
   width:20%;
   flex: 1;
   background-color: black;
+  border-radius: 10px;
 }
 
 .search-form{
   flex: 3;
   display: flex;
-  justify-content: end;
-
+  /* justify-content: end; */
+  flex-direction: row-reverse;
 
 }
 .search{
@@ -211,7 +255,7 @@ body {
 
 .movie-card-review{
   width: 100%;
-  height: 100%;
+  height: 98%;
   background: black;
   color: white;
   resize: none;
@@ -235,7 +279,7 @@ textarea{
 
 .movie-card-text{
   margin:auto;
-  height:48vh;
+  height:42vh;
   text-align: left;
   color: white;
   resize: none;
@@ -253,6 +297,7 @@ textarea{
   position: absolute;
   left: 0;
   height: 100%;
+  width: 20%;
   z-index: 1;
   background: url("https://d29fhpw069ctt2.cloudfront.net/icon/image/85188/preview.svg");
 }
