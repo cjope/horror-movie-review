@@ -57,11 +57,9 @@ function Movies(){
                     <input className="search" onChange={handleSearchText} placeholder="search" type="text"></input>
                 </form>
             </div>
-            {/* <div classname="movie-container"> */}
             <Grid className="movie-container" >
                     {listMovies}
             </Grid>
-            {/* </div> */}
         </div>
 
     )

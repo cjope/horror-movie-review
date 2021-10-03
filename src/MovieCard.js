@@ -1,65 +1,22 @@
 import { useState } from "react"
-import { useHistory } from "react-router"
 import { Card } from "semantic-ui-react"
-import { TextArea } from "semantic-ui-react"
+import MovieCardReview from "./MovieCardReview"
 
 function MovieCard({movie}){
     const [isFlipped, setIsFlipped]=useState(false)
-    const [reviewText, setReviewText]=useState("")
-    const [rating, setRating]=useState(0)
-    let history=useHistory()
 
-
-    function handleClick(){
+    function handleShowInput(){
         !isFlipped?setIsFlipped(true):setIsFlipped(false)
-        setReviewText("")
-        setRating(1)
     }
-
-    function submitReview(e){
-        const newReview={
-                title: movie.title,
-                reviewText: reviewText,
-                rating: rating,
-                image: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
-        }
-        fetch("http://localhost:3001/reviewArray",{ 
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newReview),
-        })
-        .then(res=>res.json())
-        setIsFlipped(false)
-        history.push("./Reviews") //niiice!
-        }
 
     return(
         <div style={{backgroundColor:"black", padding:"2%", width:"45ch"}}>
             <Card>
                 {!isFlipped?
-                <div onClick={handleClick} className="mc" >
+                <div onClick={handleShowInput} className="mc" >
                     <img className="mc-poster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title}>{movie.poster_url}</img>
                 </div>:
-               //this should be its own component>>
-               <div className="mcr" >
-                    <span className="pumpkin-rating">
-                        <input type="radio" name="rating" value="1" onClick={()=>setRating(1)}/><i></i>
-                        <input type="radio" name="rating" value="2"onClick={()=>setRating(2)}/><i></i>
-                        <input type="radio" name="rating" value="3"onClick={()=>setRating(3)}/><i></i>
-                        <input type="radio" name="rating" value="4"onClick={()=>setRating(4)}/><i></i>
-                        <input type="radio" name="rating" value="5"onClick={()=>setRating(5)}/><i></i>
-                    </span>
-                    <div >
-                        <div className="mcr-text" >
-                            <TextArea type="text" placeholder={`Write a Review for ${movie.title}!`} className="mcr" onChange={(e)=>setReviewText(e.target.value)}/>
-                        </div>        
-                    </div>
-                        <button type="button" onClick={handleClick} className="mcr-cancel" >X</button>
-                        <button type="button" onClick={submitReview} className="mcr-submit">Submit</button>
-                        <p style={{position:"absolute", bottom:"15%", right:0, opacity:.5}}>{reviewText.length}/400</p>
-                </div>
+               <MovieCardReview handleShowInput={handleShowInput} movie={movie} />
                 }
             </Card>
         </div>

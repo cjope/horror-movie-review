@@ -1,17 +1,7 @@
-function ReviewCard({review, onDeleteReview}){
-    const voteAverage = review.rating
-    const p1 = <img className="pumpkin-light" alt="pumpkin-light" src="https://d29fhpw069ctt2.cloudfront.net/icon/image/85188/preview.svg"></img>
-    const p0 = <img className="pumpkin-dark" alt="pumpkin-dark" src="https://d29fhpw069ctt2.cloudfront.net/icon/image/85188/preview.svg"></img>
-    const {id} = review
+import VoteToStars from "./VotetoStars"
 
-    function voteToStars(){
-        if (voteAverage <3) return <>{p1}{p0}{p0}{p0}{p0}</>
-        if (voteAverage >=3 && voteAverage <5) return <>{p1}{p1}{p0}{p0}{p0}</>
-        if (voteAverage >=5 && voteAverage <7) return <>{p1}{p1}{p1}{p0}{p0}</>
-        if (voteAverage >=7 && voteAverage <9) return <>{p1}{p1}{p1}{p1}{p0}</>
-        if (voteAverage >=9) return <>{p1}{p1}{p1}{p1}{p1}</>
-        else return <>{p0}{p0}{p0}{p0}{p0}</>
-        }    
+function ReviewCard({review, onDeleteReview}){
+    const {id} = review
 
         function onDeleteClick(){
             fetch(`http://localhost:3001/reviewArray/${id}`,{
@@ -27,7 +17,8 @@ function ReviewCard({review, onDeleteReview}){
                 <img className="rc-image"  src={review.image} alt={review.title}/>
                 <div >
                     <h1 className="rc-title" key={review.id}>{review.title}</h1>
-                    <div className="rc-rating" >{voteToStars(voteAverage)}</div>
+                    {/* <div className="rc-rating" >{voteToStars(voteAverage)}</div> */}
+                    <div className="rc-rating" ><VoteToStars review={review}/></div>
                 </div>
                 <h2 className="rc-review" >"{review.reviewText}"</h2>
                 <button type="button" onClick={onDeleteClick} className="rc-delete" >X</button>
