@@ -194,6 +194,18 @@ body {
 div.ui.card.mc-container{
   background-color: black;
 }
+
+.mcr-movie-name{
+  position: absolute;
+  top:50%;
+  font-size: x-large;  
+  color: orange;
+  width: 100%;
+  opacity: .1;
+  text-align: center;
+  font-family: "papyrus";
+}
+
 textarea{
   position: absolute;
   width: 98%;

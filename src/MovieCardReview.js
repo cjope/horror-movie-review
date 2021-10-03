@@ -33,6 +33,7 @@ function MovieCardReview({movie, handleShowInput}){
 
     return(
         <div>
+        <p className="mcr-movie-name" >{movie.title}</p>
         <span className="pumpkin-rating">
             <input type="radio" name="rating" value="1" onClick={()=>setRating(1)}/><i></i>
             <input type="radio" name="rating" value="2"onClick={()=>setRating(2)}/><i></i>
@@ -41,7 +42,8 @@ function MovieCardReview({movie, handleShowInput}){
             <input type="radio" name="rating" value="5"onClick={()=>setRating(5)}/><i></i>
         </span>
         <button className="mcr-cancel"  type="button" onClick={handleCancel}>X</button>
-        <TextArea type="text" placeholder={`Write a Review for ${movie.title}!`} onChange={(e)=>setReviewText(e.target.value)}/>
+        <TextArea type="text" placeholder={`Write you Review for ${movie.title} here...`} onChange={(e)=>setReviewText(e.target.value)}/>
+
         <button className="mcr-submit" type="button" onClick={submitReview}>Submit</button>     
     </div>
     )
