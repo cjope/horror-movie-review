@@ -113,23 +113,32 @@ body {
   border-radius: 10px;
   resize: none;
   height: 100%;
+  flex: 1;
+}
+.rc-mid{
+  flex:1;
 }
 .rc-title{ 
   color: orange;
   text-align: center;
   font-size: auto;
-  padding: 10%;
+  /* padding: 10%; */
   cursor:default;
-  font-size: 3em;
+  padding-bottom: 10%;
+  padding-top: 10%;
+  margin: 1%;
+}
+.rc-rating{
+  padding-top: 10%;
+text-align: center;
 }
 .rc-review{
   color: orange;
   width: 100%;
   cursor: default;
-}
-.rc-rating{
-  display: flex;
-  justify-content: center;
+  flex: 3;
+  overflow: hidden;
+  margin: 1%;
 }
 .pumpkin-light{
   width: 15%;
@@ -157,6 +166,10 @@ body {
 }
 
 /* Movies */
+
+.movies-all{
+  padding-bottom: 5%;
+}
 .movie-grid{
   justify-content: center;
 }
@@ -180,6 +193,7 @@ body {
 .mc-container{
   height: 100%;
   width: 100%;
+  margin-bottom: 5%;
 }
 .mc-poster{
   height: 100%;
@@ -206,8 +220,11 @@ div.ui.card.mc-container{
   padding-inline: 2%;
   text-align: center;
   font-family: "papyrus";
-  transform: scaleX(-1);
+  z-index: 5;
+}
 
+.mcr-movie-name-redrum:hover{
+  transform: scaleX(-1);
 }
 
 textarea{

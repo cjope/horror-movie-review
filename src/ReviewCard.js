@@ -14,7 +14,7 @@ function ReviewCard({review, onDeleteReview}){
     return(
         <div className="rc">
                 <img className="rc-image"  src={review.image} alt={review.title}/>
-                <div >
+                <div className="rc-mid" >
                     <h1 className="rc-title" key={review.id}>{review.title}</h1>
                     <div className="rc-rating" ><VoteToStars review={review}/></div>
                 </div>
