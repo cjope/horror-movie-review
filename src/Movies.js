@@ -27,7 +27,8 @@ function Movies(){
         }
     },[searchQuery, page, browseURL])
 
-    const listMovies = movieData.map(movie => movie.genre_ids.includes(27)&&movie.poster_path!==null? <MovieCard key = {movie.id} movie = {movie} isFlipped={false} />:null)
+    const listMovies = movieData.map(movie => movie.genre_ids.includes(27)&&movie.poster_path!==null?
+    <MovieCard key = {movie.id} movie = {movie} isFlipped={false} />:null)
 
     return(
         <div className="movies-all">

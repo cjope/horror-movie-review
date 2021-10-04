@@ -177,12 +177,13 @@ text-align: center;
   margin-top: 5%;
   min-width:inherit;
   min-height: 42vh;
+
 }
 /* MovieCard */
 .mc{
   background-color: black;
 }
-.mc:hover{
+div.ui.card.mc-container:hover{
   box-shadow:
     0 0 5px #fff,
     -1px 0 8px orange,
@@ -193,11 +194,17 @@ text-align: center;
   height: 100%;
   width: 100%;
   margin-bottom: 5%;
+  justify-content: center;
+  
 }
 .mc-poster{
   height: 100%;
   width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
   border-radius: 5px;
+
 }
 
 /* MovieCardReview*/
@@ -224,6 +231,7 @@ div.ui.card.mc-container{
 
 .mcr-movie-name-redrum:hover{
   transform: scaleX(-1);
+  cursor:text;
 }
 
 textarea{
