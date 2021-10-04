@@ -20,7 +20,7 @@ function MovieCardReview({movie, handleShowInput}){
                 rating: rating,
                 image: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
         }
-        fetch("http://localhost:3001/reviewArray",{ 
+        fetch("https://movie-review-json.herokuapp.com/reviewArray",{ 
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

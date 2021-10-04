@@ -1,10 +1,10 @@
 import VoteToStars from "./VotetoStars"
 
-function ReviewCard({review, setReviews, reviews}){
+function ReviewCard({review, setReviews}){
     const {id} = review
 
         function onDeleteClick(){
-            fetch(`http://localhost:3001/reviewArray/${id}`,{
+            fetch(`https://movie-review-json.herokuapp.com/reviewArray/${id}`,{
                 method: "DELETE",
         })
             .then(res=>res.json())
