@@ -11,8 +11,6 @@ function Reviews(){
         .then(data => setReviews(data))
     },[reviews.length])
 
-    console.log(reviews)
-
     const listReviews = reviews.map((review)=>(<ReviewCard key={review.id} review={review} setReviews={setReviews}/> ))
 
     return(
