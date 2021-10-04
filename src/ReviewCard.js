@@ -1,6 +1,6 @@
 import VoteToStars from "./VotetoStars"
 
-function ReviewCard({review, onDeleteReview}){
+function ReviewCard({review, setReviews, reviews}){
     const {id} = review
 
         function onDeleteClick(){
@@ -8,7 +8,7 @@ function ReviewCard({review, onDeleteReview}){
                 method: "DELETE",
         })
             .then(res=>res.json())
-            .then(()=>onDeleteReview(review))
+            setReviews([])
         }   
 
     return(

@@ -4,19 +4,16 @@ import { Grid } from "semantic-ui-react"
 
 function Reviews(){
     const [reviews, setReviews]=useState([])
-
+    
     useEffect(()=>{
          fetch("http://localhost:3001/reviewArray")
         .then(res=>res.json())
-        .then(data => setReviews(data))   
-    },[reviews])
+        .then(data => setReviews(data))
+    },[reviews.length])
 
-    function handleDeleteReview(){
-        const updatedReviews = reviews.filter((review)=>review.id)
-        setReviews(updatedReviews)
-    }
+    console.log(reviews)
 
-    const listReviews = reviews.map((review)=>(<ReviewCard key={review.id} review={review} onDeleteReview={handleDeleteReview}/> ))
+    const listReviews = reviews.map((review)=>(<ReviewCard key={review.id} review={review} setReviews={setReviews}/> ))
 
     return(
         <div className="reviews">
