@@ -175,8 +175,8 @@ text-align: center;
 .movie-container{
   margin-inline: 1%;
   margin-top: 5%;
-  min-width:inherit;
-  min-height: 42vh;
+  /* min-width:inherit; */
+  /* min-height: 42vh; */
 
 }
 /* MovieCard */
