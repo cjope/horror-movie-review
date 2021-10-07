@@ -182,6 +182,7 @@ text-align: center;
 /* MovieCard */
 .mc{
   background-color: black;
+  height:430px
 }
 div.ui.card.mc-container:hover{
   box-shadow:
