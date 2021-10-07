@@ -194,15 +194,15 @@ div.ui.card.mc-container:hover{
   height: 100%;
   width: 100%;
   margin-bottom: 5%;
-  justify-content: center;
+  /* justify-content: center; */
   
 }
 .mc-poster{
   height: 100%;
   width: 100%;
-  position: absolute;
+  /* position: absolute;
   right: 0;
-  top: 0;
+  top: 0; */
   border-radius: 5px;
 
 }
