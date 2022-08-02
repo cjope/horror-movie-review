@@ -19,7 +19,7 @@ function App(){
     <ToastContainer />
 
     <Switch>
-      <Route path= "/Queue">
+      {/* <Route path= "/Queue">
         <Reviews/>
       </Route>
       <Route path = "/Movies">
@@ -30,9 +30,9 @@ function App(){
       </Route>
       <Route path = "/Test">
         <Test/>
-      </Route>
+      </Route> */}
       <Route exact path = "/">
-        <Home/>
+        <Test/>
       </Route>
 
     </Switch>
