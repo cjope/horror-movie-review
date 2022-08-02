@@ -114,7 +114,7 @@ function Test(){
                         <InputLabel id="select-label" style={{color:"orange"}}>FILTER</InputLabel>
                             <Select defaultValue={""} style={{color:"white"}} onChange={handleGenre}>
                                 <MenuItem value="">All</MenuItem>
-                                {genreData.map(genre=><MenuItem value={genre.id}>{genre.name}</MenuItem>)}
+                                {genreData.map(genre=><MenuItem key={genre.id}>{genre.name}</MenuItem>)}
                              </Select>
                     </FormControl>
                 </div>

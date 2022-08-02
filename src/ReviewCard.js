@@ -4,7 +4,7 @@ import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
 import { Button, Icon, IconButton, Tooltip } from "@mui/material"
 import { useHistory } from 'react-router-dom';
 
-function ReviewCard({review, setReviews}){
+function ReviewCard({movie, show, type, movies, shows}){
     const history = useHistory()
 
     function reloadPage(){
@@ -12,34 +12,42 @@ function ReviewCard({review, setReviews}){
     }
 
         function onDeleteClick(e){
-            fetch(`https://gentle-wildwood-75759.herokuapp.com/movies/${e}`,{
+            let typeName = ""
+            type ? typeName = "movies" : typeName = "tvshows"
+            fetch(`https://gentle-wildwood-75759.herokuapp.com/${typeName}/${e}`,{
                 method: "DELETE",
                 header: 'Access-Control-Allow-Origin:*',
 
         })
-            setTimeout(reloadPage(), 5000)
+        console.log(movies, shows)
         }   
 
     return(
         <div className="rc">
+
+        {type?
             <div>
-
-            <img className="rc-image"  src={review.image} alt={review.title}/>
-            <h1 className="rc-title" key={review.id}>{review.title}
-            {/* <div style={{border:"solid yellow", position:"absolute", width:"100%"}} > */}
-            <Tooltip title="Delete">
-                <IconButton type="button" value={review.site_id} color="error" onClick={e=>onDeleteClick(review.id)}  >
-                    <HighlightOffOutlinedIcon/>
-                </IconButton>
-            </Tooltip>
+                <img className="rc-image"  src={movie.image} alt={movie.title}/>
+                <h1 className="rc-title">{movie.title}
+                    <Tooltip title="Delete">
+                        <IconButton type="button" color="error" onClick={e=>onDeleteClick(movie.id)}  >
+                            <HighlightOffOutlinedIcon/>
+                        </IconButton>
+                    </Tooltip>
                 </h1>
-            {/* </div> */}
-
             </div>
-                {/* <div className="rc-mid" > */}
-                    {/* <div className="rc-rating" ><VoteToStars review={review}/></div> */}
-                {/* </div> */}
-                {/* <h2 className="rc-review" >"{review.reviewText}"</h2> */}
+        :
+            <div>
+                <img className="rc-image"  src={show.image} alt={show.name}/>
+                <h1 className="rc-title">{show.name}
+                    <Tooltip title="Delete">
+                        <IconButton type="button" color="error" onClick={e=>onDeleteClick(show.id)}  >
+                            <HighlightOffOutlinedIcon/>
+                        </IconButton>
+                    </Tooltip>
+                </h1>
+            </div>
+        }
         </div>
     )
 }
