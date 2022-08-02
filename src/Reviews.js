@@ -6,7 +6,7 @@ function Reviews(){
     const [reviews, setReviews]=useState([])
     
     useEffect(()=>{
-         fetch("https://movie-review-json.herokuapp.com/reviewArray")
+         fetch("https://arcane-wildwood-99577.herokuapp.com/movies")
         .then(res=>res.json())
         .then(data => setReviews(data))
     },[reviews.length])

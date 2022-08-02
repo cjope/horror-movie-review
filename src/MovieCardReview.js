@@ -8,14 +8,16 @@ function MovieCardReview({movie, handleShowInput, fakeRoute}){
             const title = movie.title?.toLowerCase().includes(notAllowed)
             const newReview={
                 title: movie.title,
-                image: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
+                // image: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
+                site_id: movie.id,
+
             }
             if(title){
                 toast.error("Error - Please adjust your taste",{icon:"🤮", autoClose:1000, hideProgressBar:true, position:"top-center", theme:"dark"})
                 handleShowInput()
             }
             else{
-                fetch("https://movie-review-json.herokuapp.com/reviewArray",{ 
+                fetch("https://arcane-wildwood-99577.herokuapp.com/movies",{ 
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -29,9 +31,10 @@ function MovieCardReview({movie, handleShowInput, fakeRoute}){
         else{
             const newReview={
                 title: movie.name,
-                image: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
+                // image: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
+                site_id: movie.id,
             }
-            fetch("https://movie-review-json.herokuapp.com/reviewArray",{ 
+            fetch("https://arcane-wildwood-99577.herokuapp.com/tvshows",{ 
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

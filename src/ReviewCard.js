@@ -7,7 +7,7 @@ function ReviewCard({review, setReviews}){
     const {id} = review
 
         function onDeleteClick(){
-            fetch(`https://movie-review-json.herokuapp.com/reviewArray/${id}`,{
+            fetch(`https://arcane-wildwood-99577.herokuapp.com/movies/${id}`,{
                 method: "DELETE",
         })
             .then(res=>res.json())
