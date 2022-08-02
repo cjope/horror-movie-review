@@ -1,26 +1,21 @@
-import { TextArea } from "semantic-ui-react"
-import { useHistory } from "react-router"
-import { useState } from "react"
+import { toast } from "react-toastify"
 
 function MovieCardReview({movie, handleShowInput}){
-    const [reviewText, setReviewText]=useState("")
-    const [rating, setRating]=useState(0)
-    let history=useHistory()
-
-    function handleCancel(){
-        setReviewText("")
-        setRating(0)
-        handleShowInput()
-    }
 
     function submitReview(e){
+        const notAllowed = "minions"
+        const title = movie.title.toLowerCase().includes(notAllowed)
         const newReview={
                 title: movie.title,
-                reviewText: reviewText,
-                rating: rating,
                 image: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
         }
-        fetch("https://movie-review-json.herokuapp.com/reviewArray",{ 
+        
+        if(title){
+        toast.error("Error - Please adjust your taste",{icon:"🤮", autoClose:1000, hideProgressBar:true, position:"top-center", theme:"dark"})
+        handleShowInput()
+    }
+        else{
+            fetch("https://movie-review-json.herokuapp.com/reviewArray",{ 
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -28,23 +23,30 @@ function MovieCardReview({movie, handleShowInput}){
             body: JSON.stringify(newReview),
         })
         .then(res=>res.json())
-        history.push("./Reviews")
+        toast.success(`${movie.title} has been added to the Queue`,{icon:"🍿", autoClose:1000, hideProgressBar:true, position:"top-center", theme:"dark" })
+        handleShowInput()
+   
+    }
+    
         }
 
     return(
         <div>
-        <p className="mcr-movie-name-redrum" >{movie.title}</p>
-        <span className="pumpkin-rating">
+        <img onClick={handleShowInput} style={{position:"absolute", opacity:.2}} className="mc-poster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title}>{movie.poster_url}</img>
+        {/* <span className="pumpkin-rating">
             <input type="radio" name="rating" value="1" onClick={()=>setRating(1)}/><i></i>
             <input type="radio" name="rating" value="2"onClick={()=>setRating(2)}/><i></i>
             <input type="radio" name="rating" value="3"onClick={()=>setRating(3)}/><i></i>
             <input type="radio" name="rating" value="4"onClick={()=>setRating(4)}/><i></i>
             <input type="radio" name="rating" value="5"onClick={()=>setRating(5)}/><i></i>
-        </span>
-        <button className="mcr-cancel"  type="button" onClick={handleCancel}>X</button>
-        <TextArea type="text" placeholder={`Write you Review for ${movie.title} here...`} onChange={(e)=>setReviewText(e.target.value)}/>
+        </span> */}
+        <p style={{color:"white"}}>{movie.title}</p>
+        <p style={{color:"white", zIndex:1}}>{movie.overview}</p>
+        <button className="mcr-cancel"  type="button" onClick={handleShowInput}>X</button>
+    
+        {/* <TextArea type="text" placeholder={`Write you Review for ${movie.title} here...`} onChange={(e)=>setReviewText(e.target.value)}/> */}
 
-        <button className="mcr-submit" type="button" onClick={submitReview}>Submit</button>     
+        <button className="mcr-submit" type="button" onClick={submitReview}>Add</button>     
     </div>
     )
 }

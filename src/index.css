@@ -14,7 +14,7 @@ body {
   position: sticky;
   top:0;
   z-index: 5;
-  background-color: black;
+  background-color: rgb(25, 25, 25);
   height: 8vh;
 }
 .nav-links {
@@ -39,17 +39,19 @@ body {
 }
 .nav-neg{
   flex: 3;
-  text-align: end;
-  margin: auto;
+  display: flex;
+  justify-content: end;
+  margin-right: 10%;
+  margin-top: .5%;
 }
 .nav-title{
     color: orange;
-    font-family: "papyrus";
-    font-size: 42px;
-    text-align: end;
+    font-family: "open sans semibold";
+    font-size: 35px;
+    /* text-align: start; */
     margin-right: 8%;
     cursor: pointer;
-    margin-left: 10%;
+    /* margin-left: 10%; */
 }
 .nav-title:hover{
   color: orange;
@@ -57,39 +59,47 @@ body {
 
 /* NavButtons */
 .movies-nav{
-  background-color:black;
-  position:fixed;
+  /* background-color:rgb(39, 38, 38); */
+  position:absolute;
   width: 100%;
   z-index: 5;
   display: flex;
-  flex: 5;
-  padding-bottom: 1%;
+  /* flex: 5; */
+  padding-top: 1%;
+  top:0;
+  justify-content: center;
 }
 .buttons{
   flex: 4;
   display: flex;
-  justify-content: flex-end;
-  padding-left: 27%;
-  padding-right: 5%;
+  /* justify-content: flex-end; */
+  /* padding-left: 27%; */
+  /* padding-right: 5%; */
 }
 .button{
   color: orange;
   cursor: pointer;
-  margin-left: 10%;
-  width:50%;
-  background-color: black;
+  /* margin-left: 10%; */
+  /* width:50%; */
+  
+  background-color: rgb(25, 25, 25);
   border-radius: 10px;
 }
 .search-form{
-  flex: 2;
+  /* flex: 2; */
   display: flex;
   flex-direction: row-reverse;
-  padding-right: 6%;
 }
 .search{
   color: orange;
-  background-color: black;
+  background-color: rgb(39, 38, 38);
   font-size: 20px;
+  margin-right: 6%;
+}
+
+.genre-select{
+  margin-right: 2%;
+  /* padding-right: 2%; */
 }
 
 /* Reviews */
@@ -102,17 +112,17 @@ body {
   border-color: orange;
   border-style: solid;
   border-radius: 10px;
-  margin-bottom: 2%;
 }
 .rc-image{
-  margin-top: 1%;
-  margin-bottom: 1%;
+  /* margin-top:1%; */
+  /* margin-bottom: 1%; */
   border-radius: 10px;
   resize: none;
   height: auto;
-  overflow:auto;
+  /* overflow:auto; */
   width: 100%;
-  flex: 1;
+  /* flex: 1; */
+  /* opacity: .5; */
 }
 .rc-mid{
   flex:1;
@@ -121,11 +131,14 @@ body {
   color: orange;
   text-align: center;
   font-size: auto;
+  /* top: 0; */
+  /* z-index: 100; */
   /* padding: 10%; */
-  cursor:default;
-  padding-bottom: 10%;
-  padding-top: 10%;
-  margin: 1%;
+  /* cursor:default; */
+  /* padding-bottom: 10%; */
+  /* padding-top: 10%; */
+  /* margin: 1%; */
+  text-align: center;
 }
 .rc-rating{
   padding-top: 10%;
@@ -147,42 +160,55 @@ text-align: center;
   opacity: .3;
 }
 .rc-delete{
-  height: 38px;
-  width: 38px;
+  height: 30px;
+  width: 30px;
   background: transparent;
-  border-color: orange; 
+  /* border-color: white;  */
   color:orange;
-  position:absolute;
-  right:4.5%;
-  border-radius: 100%;
+  /* position:relative; */
+  /* left:90%; */
+  bottom: 5%;
+  /* border-radius: 100%; */
   opacity: .5;
-  margin-top: .1%;
+  /* margin-top: .1%; */
+  margin-left: 2%;
 }
 .rc-delete:hover{
   opacity: 1;
   cursor: pointer;
   border-color: orange;
+  color: white;
 }
 
 /* Movies */
 
-.movies-all{
+/* .movies-all{
   padding-bottom: 5%;
-}
+} */
 .movie-grid{
   justify-content: center;
+  height: 800px;
 }
+
+.ui.grid{
+  overflow:scroll;
+  overflow-x: unset;
+}
+
 .movie-container{
   margin-inline: 1%;
-  margin-top: 5%;
-  min-width:inherit;
-  min-height: 42vh;
+  margin-top: 2%;
+  /* min-width:inherit; */
+  /* min-height: 42vh; */
 
 }
+
+::-webkit-scrollbar {display:none;}
+
 /* MovieCard */
-.mc{
+/* .mc{
   background-color: black;
-}
+} */
 div.ui.card.mc-container:hover{
   box-shadow:
     0 0 5px #fff,
