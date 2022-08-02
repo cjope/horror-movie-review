@@ -57,7 +57,7 @@ function Test(){
 
 
     const listMovies = movieData.map(movie => 
-    <MovieCard key = {movie.id} movie = {movie} isFlipped={false} />)
+    <MovieCard fakeRoute={fakeRoute} key = {movie.id} movie = {movie} isFlipped={false} />)
 
     function handlePreviousPage(){
         page===1? setPage(1): setPage(page-1)

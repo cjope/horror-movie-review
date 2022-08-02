@@ -1,34 +1,49 @@
 import { toast } from "react-toastify"
 
-function MovieCardReview({movie, handleShowInput}){
+function MovieCardReview({movie, handleShowInput, fakeRoute}){
 
     function submitReview(e){
-        const notAllowed = "minions"
-        const title = movie.title.toLowerCase().includes(notAllowed)
-        const newReview={
+        if(fakeRoute === "movie"){
+            const notAllowed = "minions"
+            const title = movie.title?.toLowerCase().includes(notAllowed)
+            const newReview={
                 title: movie.title,
                 image: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
+            }
+            if(title){
+                toast.error("Error - Please adjust your taste",{icon:"🤮", autoClose:1000, hideProgressBar:true, position:"top-center", theme:"dark"})
+                handleShowInput()
+            }
+            else{
+                fetch("https://movie-review-json.herokuapp.com/reviewArray",{ 
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(newReview),
+                })
+                .then(res=>res.json())
+                toast.success(`${movie.title} has been added to the Queue`,{icon:"🍿", autoClose:1000, hideProgressBar:true, position:"top-center", theme:"dark" })
+            }
         }
-        
-        if(title){
-        toast.error("Error - Please adjust your taste",{icon:"🤮", autoClose:1000, hideProgressBar:true, position:"top-center", theme:"dark"})
-        handleShowInput()
-    }
         else{
+            const newReview={
+                title: movie.name,
+                image: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
+            }
             fetch("https://movie-review-json.herokuapp.com/reviewArray",{ 
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newReview),
-        })
-        .then(res=>res.json())
-        toast.success(`${movie.title} has been added to the Queue`,{icon:"🍿", autoClose:1000, hideProgressBar:true, position:"top-center", theme:"dark" })
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newReview),
+            })
+            .then(res=>res.json())
+            toast.success(`${movie.name} has been added to the Queue`,{icon:"🍿", autoClose:1000, hideProgressBar:true, position:"top-center", theme:"dark" })
+        }
         handleShowInput()
    
     }
-    
-        }
 
     return(
         <div>
