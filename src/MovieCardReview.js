@@ -8,7 +8,7 @@ function MovieCardReview({movie, handleShowInput, fakeRoute}){
             const title = movie.title?.toLowerCase().includes(notAllowed)
             const newReview={
                 title: movie.title,
-                // image: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
+                image: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
                 site_id: movie.id,
 
             }
