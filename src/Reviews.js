@@ -9,7 +9,10 @@ function Reviews(){
          fetch("https://gentle-wildwood-75759.herokuapp.com/movies")
         .then(res=>res.json())
         .then(data => setReviews(data))
-    },[reviews.length])
+    },[])
+    
+    console.log(reviews)
+
 
     const listReviews = reviews.map((review)=>(<ReviewCard key={review.id} review={review} setReviews={setReviews}/> ))
 

@@ -9,6 +9,8 @@ function ReviewCard({review, setReviews}){
         function onDeleteClick(){
             fetch(`https://gentle-wildwood-75759.herokuapp.com/movies/${id}`,{
                 method: "DELETE",
+                header: 'Access-Control-Allow-Origin:*',
+
         })
             .then(res=>res.json())
             setReviews([])
