@@ -17,7 +17,7 @@ function MovieCardReview({movie, handleShowInput, fakeRoute}){
                 handleShowInput()
             }
             else{
-                fetch("https://arcane-wildwood-99577.herokuapp.com/movies",{ 
+                fetch("https://gentle-wildwood-75759.herokuapp.com/movies",{ 
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -34,7 +34,7 @@ function MovieCardReview({movie, handleShowInput, fakeRoute}){
                 // image: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
                 site_id: movie.id,
             }
-            fetch("https://arcane-wildwood-99577.herokuapp.com/tvshows",{ 
+            fetch("https://gentle-wildwood-75759.herokuapp.com/tvshows",{ 
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
