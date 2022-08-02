@@ -25,7 +25,6 @@ function MovieCardReview({movie, handleShowInput, fakeRoute}){
                     },
                     body: JSON.stringify(newReview),
                 })
-                // .then(res=>res.json())
                 toast.success(`${movie.title} has been added to the Queue`,{icon:"🍿", autoClose:1000, hideProgressBar:true, position:"top-center", theme:"dark" })
             }
         }
@@ -44,7 +43,6 @@ function MovieCardReview({movie, handleShowInput, fakeRoute}){
                 },
                 body: JSON.stringify(newReview),
             })
-            // .then(res=>res.json())
             toast.success(`${movie.name} has been added to the Queue`,{icon:"🍿", autoClose:1000, hideProgressBar:true, position:"top-center", theme:"dark" })
         }
         handleShowInput()

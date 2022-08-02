@@ -12,7 +12,6 @@ function ReviewCard({review, setReviews}){
                 header: 'Access-Control-Allow-Origin:*',
 
         })
-            .then(res=>res.json())
             setReviews([])
         }   
 
