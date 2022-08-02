@@ -32,7 +32,7 @@ function MovieCardReview({movie, handleShowInput, fakeRoute}){
         else{
             const newReview={
                 title: movie.name,
-                // image: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
+                image: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
                 site_id: movie.id,
             }
             fetch("https://gentle-wildwood-75759.herokuapp.com/tvshows",{ 
