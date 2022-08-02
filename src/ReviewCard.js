@@ -2,17 +2,22 @@
 import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
 
 import { Button, Icon, IconButton, Tooltip } from "@mui/material"
+import { useHistory } from 'react-router-dom';
 
 function ReviewCard({review, setReviews}){
-    const {id} = review
+    const history = useHistory()
 
-        function onDeleteClick(){
-            fetch(`https://gentle-wildwood-75759.herokuapp.com/movies/${id}`,{
+    function reloadPage(){
+        history.go(0)
+    }
+
+        function onDeleteClick(e){
+            fetch(`https://gentle-wildwood-75759.herokuapp.com/movies/${e}`,{
                 method: "DELETE",
                 header: 'Access-Control-Allow-Origin:*',
 
         })
-            setReviews([])
+            setTimeout(reloadPage(), 5000)
         }   
 
     return(
@@ -23,7 +28,7 @@ function ReviewCard({review, setReviews}){
             <h1 className="rc-title" key={review.id}>{review.title}
             {/* <div style={{border:"solid yellow", position:"absolute", width:"100%"}} > */}
             <Tooltip title="Delete">
-                <IconButton type="button" color="error" onClick={onDeleteClick}  >
+                <IconButton type="button" value={review.site_id} color="error" onClick={e=>onDeleteClick(review.id)}  >
                     <HighlightOffOutlinedIcon/>
                 </IconButton>
             </Tooltip>

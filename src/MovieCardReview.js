@@ -30,7 +30,7 @@ function MovieCardReview({movie, handleShowInput, fakeRoute}){
         }
         else{
             const newReview={
-                title: movie.name,
+                name: movie.name,
                 image: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
                 site_id: movie.id,
             }
