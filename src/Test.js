@@ -122,7 +122,7 @@ function Test(){
                     <FormControl disabled={fakeRoute === ""}  style={{ marginLeft:"2%",width:"90%"}}>
                         <InputLabel id="select-label" style={{color:"orange"}}>SORT</InputLabel>
                             <Select defaultValue={""} style={{color:"white"}}>
-                                <option value="1">1</option>
+                                <option value="1">your shit out</option>
                             </Select>
                     </FormControl>
                 </div>
