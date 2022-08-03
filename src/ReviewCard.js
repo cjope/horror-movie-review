@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 function ReviewCard({movie, show, type, movies, shows}){
     const history = useHistory()
+    
 
     function reloadPage(){
         history.go(0)
@@ -26,7 +27,8 @@ function ReviewCard({movie, show, type, movies, shows}){
         <div className="rc">
 
         {type?
-            <div>
+            <div >
+                <p style={{ color:"rgb(69, 69, 69)", textAlign:"center", fontSize:"smaller"}} >{new Date(movie.updated_at).toLocaleDateString()}</p>
                 <img className="rc-image"  src={movie.image} alt={movie.title}/>
                 <h1 className="rc-title">{movie.title}
                     <Tooltip title="Delete">
@@ -34,10 +36,13 @@ function ReviewCard({movie, show, type, movies, shows}){
                             <HighlightOffOutlinedIcon/>
                         </IconButton>
                     </Tooltip>
+
                 </h1>
+
             </div>
         :
             <div>
+                <p style={{ color:"rgb(69, 69, 69)", textAlign:"center", fontSize:"smaller"}} >{new Date(show.updated_at).toLocaleDateString()}</p>
                 <img className="rc-image"  src={show.image} alt={show.name}/>
                 <h1 className="rc-title">{show.name}
                     <Tooltip title="Delete">

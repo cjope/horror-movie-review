@@ -109,9 +109,13 @@ body {
 /* ReviewCard */
 .rc{
   display: flex;
-  border-color: orange;
+  box-shadow:
+  0 0 5px #fff,
+  -1px 0 8px orange,
+  1px 0 8px rgb(245, 205, 130);
   border-style: solid;
   border-radius: 10px;
+  margin: 1%;
 }
 .rc-image{
   /* margin-top:1%; */
