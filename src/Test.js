@@ -9,6 +9,7 @@ import Reviews from "./Reviews";
 import { BrowserView, MobileView } from "react-device-detect";
 
 
+
 function Test(){
     const [page, setPage] = useState(1)
     const [movieData, setMovieData] = useState([])
@@ -20,8 +21,11 @@ function Test(){
     const browseURL = `https://api.themoviedb.org/3/discover/${fakeRoute}?api_key=058b20ba9bda19035670479e41a673af`
     const searchURL = `https://api.themoviedb.org/3/search/${fakeRoute}?api_key=058b20ba9bda19035670479e41a673af&sort_by=popularity.desc&query=`
     const getGenres = `https://api.themoviedb.org/3/genre/${fakeRoute}/list?api_key=058b20ba9bda19035670479e41a673af&language=en-US`
-    
+    // const validEmail = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$')
+    const noWeirdTitles = new RegExp('/^[a-z0-9]+$/i')
+    const today = (new Date().toJSON().split("T")[0]).toString()
 
+console.log(today)
     useEffect(()=>{
         fetch(getGenres)
         .then(res => res.json())
@@ -31,8 +35,7 @@ function Test(){
     useEffect(() => {
         if(fakeRoute !== ""){
         if(searchQuery === "") {
-            console.log(`${browseURL}&sort_by=${sortBy}&with_genres=${genre}&page=${page}`)
-            fetch(`${browseURL}&sort_by=${sortBy}&with_genres=${genre}&release_date.lte=${new Date().getFullYear()}&page=${page}`)
+            fetch(`${browseURL}&sort_by=${sortBy}&with_genres=${genre}&release_date.lte=${today}&language=en-US&page=${page}`)
             .then(res => res.json())
             .then(data => setMovieData(data.results))
         }
@@ -46,6 +49,8 @@ function Test(){
     }
 
     },[searchQuery, page, browseURL, sortBy, genre, searchURL, fakeRoute])
+
+    console.log(movieData)
 
     const listMovies = movieData.map(movie => <MovieCard fakeRoute={fakeRoute} key = {movie.id} movie = {movie} isFlipped={false} />)
 
@@ -100,7 +105,7 @@ function Test(){
                              </Select>
                     </FormControl>
                 </div>:null}
-                {fakeRoute !== ""?
+                {/* {fakeRoute !== ""?
                 <div style={{flex:1}}>
                     <FormControl disabled={fakeRoute === ""}  style={{ marginLeft:"2%",width:"90%"}}>
                         <InputLabel id="select-label" style={{color:"orange"}}>SORT</InputLabel>
@@ -110,7 +115,7 @@ function Test(){
                                <MenuItem style={{color:"white"}} value="original_title.desc">Title</MenuItem>
                             </Select>
                     </FormControl>
-                </div>:null}
+                </div>:null} */}
                 <div style={{flex:1, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center"}}>
                     <h1 style={{color:"orange", flex:5, margin:"unset"}}>ADD TO </h1>
                     <img style={{maxHeight:"45px", flex:1}} src="https://www.plex.tv/wp-content/themes/plex/assets/img/plex-logo.svg" alt="plex-logo" ></img>
@@ -157,7 +162,7 @@ function Test(){
                              </Select>
                     </FormControl>
                 </div>:null}
-                {fakeRoute !== ""?
+                {/* {fakeRoute !== ""?
                 <div style={{marginTop:"1%"}}>
                     <FormControl fullWidth disabled={fakeRoute === ""}>
                         <InputLabel id="select-label" style={{color:"orange"}}>SORT</InputLabel>
@@ -167,7 +172,7 @@ function Test(){
                                <MenuItem style={{color:"black", backgroundColor:"white"}} value="original_title.desc">Title</MenuItem>
                             </Select>
                     </FormControl>
-                </div>:null}
+                </div>:null} */}
             </MobileView>
             {
             fakeRoute !== "" ?

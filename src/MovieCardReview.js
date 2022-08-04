@@ -14,6 +14,7 @@ function MovieCardReview({movie, handleShowInput, fakeRoute, videos}){
     const handlePopoverClose = () => {
       setAnchorEl(null);
     };
+
   
     function submitReview(e){
         setAnchorEl(null)
@@ -70,7 +71,7 @@ function MovieCardReview({movie, handleShowInput, fakeRoute, videos}){
             <button className="mcr-cancel" type="button" onClick={submitReview}>+</button>
         <div
         className="mc" 
-        style={{height:"46vh",  backgroundSize:"cover" }}
+        style={{height:"48vh",  backgroundSize:"cover" }}
         aria-owns={open ? 'mouse-over-popover' : undefined}
         aria-haspopup="true"
         onClick={handlePopoverOpen}
@@ -87,8 +88,10 @@ function MovieCardReview({movie, handleShowInput, fakeRoute, videos}){
                 onClose={handlePopoverClose}
                 disableRestoreFocus
             >
+                {fakeRoute ==="movie"?
                 <Typography sx={{ p: 1 , width:"290px", color:"white"}}>{movie.title}{' ('}{new Date(movie.release_date).getFullYear()}{')'}</Typography>
-                <br/>
+                :<Typography sx={{ p: 1 , width:"290px", color:"white"}}>{movie.name}</Typography>
+                }<br/>
                 <Typography sx={{ p: 1 , width:"290px", color:"white"}}>{movie.overview}</Typography>
             </Popover>
             <img style={{position:"absolute"}} className="mc-container" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title}>{movie.poster_url}</img>
