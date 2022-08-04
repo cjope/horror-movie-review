@@ -136,27 +136,35 @@ function Test(){
                 </div>
                 </div>
                 {fakeRoute !== ""?
-                <div>
-                    <TextField  disabled={fakeRoute === ""}  label="SEARCH" color="warning" sx={{ input: { color: 'orange' } }} variant="outlined" onChange={handleSearch} style={{ width:"90%"}} />
+                <div style={{backgroundColor:"white"}}>
+                    <TextField
+                        disabled={fakeRoute === ""} 
+                        fullWidth 
+                        label="SEARCH" 
+                        color="warning" 
+                        sx={{ input: { color: 'black', backgroundColor:"white" } }} 
+                        // variant="outlined" 
+                        onChange={handleSearch} 
+                    />
                 </div> :null}
                 {fakeRoute !== ""?
-                <div style={{flex:1}}>
-                    <FormControl disabled={fakeRoute === ""}  style={{ marginLeft:"2%", width:"90%"}}>
+                <div style={{marginTop:"1%"}} >
+                    <FormControl fullWidth disabled={fakeRoute === ""}>
                         <InputLabel id="select-label" style={{color:"orange"}}>FILTER</InputLabel>
-                            <Select defaultValue={""} style={{color:"white"}} onChange={handleGenre}>
+                            <Select defaultValue={""} style={{color:"black", backgroundColor:"white"}} onChange={handleGenre}>
                                 <MenuItem style={{color:"white"}} value="">All</MenuItem>
                                 {genreData.map(genre=><MenuItem style={{color:"white"}} value={genre.id}>{genre.name}</MenuItem>)}
                              </Select>
                     </FormControl>
                 </div>:null}
                 {fakeRoute !== ""?
-                <div style={{flex:1}}>
-                    <FormControl disabled={fakeRoute === ""}  style={{ marginLeft:"2%",width:"90%"}}>
+                <div style={{marginTop:"1%"}}>
+                    <FormControl fullWidth disabled={fakeRoute === ""}>
                         <InputLabel id="select-label" style={{color:"orange"}}>SORT</InputLabel>
-                            <Select defaultValue={""} style={{color:"white"}} onChange={handleSort}>
-                               <MenuItem style={{color:"white"}} value="popularity.desc">Popular</MenuItem> 
-                               <MenuItem style={{color:"white"}} value="release_date.desc">Release</MenuItem> 
-                               <MenuItem style={{color:"white"}} value="original_title.desc">Title</MenuItem>
+                            <Select defaultValue={""} style={{color:"black", backgroundColor:"white"}} onChange={handleSort}>
+                               <MenuItem style={{color:"black", backgroundColor:"white"}} value="popularity.desc">Popular</MenuItem> 
+                               <MenuItem style={{color:"black", backgroundColor:"white"}} value="release_date.desc">Release</MenuItem> 
+                               <MenuItem style={{color:"black", backgroundColor:"white"}} value="original_title.desc">Title</MenuItem>
                             </Select>
                     </FormControl>
                 </div>:null}
