@@ -8,6 +8,7 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Reviews from "./Reviews";
 
+
 function Test(){
 
 
@@ -16,18 +17,29 @@ function Test(){
     const [movieData, setMovieData] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
     const [searchText, setSearchText] = useState("")
-    const [sortBy, setSortBy] = useState("")
+    const [sortBy, setSortBy] = useState("popularity.desc")
     const [genreData, setGenreData] = useState([])
     const [genre, setGenre] = useState("")
     const [type,setType] =useState("movie")
 
     const [fakeRoute, setFakeRoute] = useState("")
 
+    const sortOption = [
+        "popularity.desc", 
+        "release_date.desc", 
+        "revenue.desc",
+        "primary_release_date.desc",
+        "original_title.desc",
+        "vote_average.desc",
+        "vote_count.desc"
+    ]
+
+
+
     
     const browseURL = `https://api.themoviedb.org/3/discover/${fakeRoute}?api_key=058b20ba9bda19035670479e41a673af`
     const searchURL = `https://api.themoviedb.org/3/search/${fakeRoute}?api_key=058b20ba9bda19035670479e41a673af&sort_by=popularity.desc&query=`
     const getGenres = `https://api.themoviedb.org/3/genre/${fakeRoute}/list?api_key=058b20ba9bda19035670479e41a673af&language=en-US`
-    const getSortby = `https://api.themoviedb.org/3/genre/${fakeRoute}/list?api_key=058b20ba9bda19035670479e41a673af&language=en-US`
 
     useEffect(()=>{
         fetch(getGenres)
@@ -36,10 +48,12 @@ function Test(){
     },[getGenres])
 
 
+    
     useEffect(() => {
         if(fakeRoute !== ""){
         if(searchQuery === "") {
-            fetch(`${browseURL}&sortby=${sortBy}&with_genres=${genre}&page=${page}`)
+            console.log(`${browseURL}&sort_by=${sortBy}&with_genres=${genre}&page=${page}`)
+            fetch(`${browseURL}&sort_by=${sortBy}&with_genres=${genre}&release_date.lte=${new Date().getFullYear()}&page=${page}`)
             .then(res => res.json())
             .then(data => setMovieData(data.results))
         }
@@ -50,10 +64,15 @@ function Test(){
                 .then(data => setMovieData(data.results))
             )
         }
-        setSortBy("popularity.desc")
     }
 
     },[searchQuery, page, browseURL, sortBy, genre, searchURL, fakeRoute])
+
+
+    console.log(movieData)
+    console.log(movieData.filter(m=>m.poster_path !== null))
+
+
 
 
     const listMovies = movieData.map(movie => 
@@ -65,21 +84,17 @@ function Test(){
     function handleNextPage(){
         setPage(page+1)
     }
-
-    function handleSearchText(e){
-        setSearchText(e.target.value)
-        e.target.value!==""?setSearchText(e.target.value):setSearchQuery("")
-        console.log(e.target.value)
-    }
-
     
     function handleGenre(e){
         setGenre(e.target.value)
     }
 
+    function handleSort(e){
+        setSortBy(e.target.value)
+    }
+
 
     function handleSearch(e){
-        // e.preventDefault()
         setSearchQuery(e.target.value)
     }
 
@@ -107,22 +122,24 @@ function Test(){
                     <ToggleButton color="warning" sx={{flex:1, color:"white"}}  value="tv">SHOWS</ToggleButton>
                 </ToggleButtonGroup>
                 <div style={{flex:2}}>
-                        <TextField disabled={fakeRoute === ""}  label="SEARCH" color="warning" sx={{ input: { color: 'orange' } }} variant="outlined" onChange={handleSearch} style={{ width:"90%"}} />
+                        <TextField  disabled={fakeRoute === ""}  label="SEARCH" color="warning" sx={{ input: { color: 'orange' } }} variant="outlined" onChange={handleSearch} style={{ width:"90%"}} />
                 </div> 
                 <div style={{flex:1}}>
                     <FormControl disabled={fakeRoute === ""}  style={{ marginLeft:"2%", width:"90%"}}>
                         <InputLabel id="select-label" style={{color:"orange"}}>FILTER</InputLabel>
                             <Select defaultValue={""} style={{color:"white"}} onChange={handleGenre}>
-                                <MenuItem value="">All</MenuItem>
-                                {genreData.map(genre=><MenuItem value={genre.id}>{genre.name}</MenuItem>)}
+                                <MenuItem style={{color:"white"}} value="">All</MenuItem>
+                                {genreData.map(genre=><MenuItem style={{color:"white"}} value={genre.id}>{genre.name}</MenuItem>)}
                              </Select>
                     </FormControl>
                 </div>
                 <div style={{flex:1}}>
                     <FormControl disabled={fakeRoute === ""}  style={{ marginLeft:"2%",width:"90%"}}>
                         <InputLabel id="select-label" style={{color:"orange"}}>SORT</InputLabel>
-                            <Select defaultValue={""} style={{color:"white"}}>
-                                <option value="1">your shit out</option>
+                            <Select defaultValue={""} style={{color:"white"}} onChange={handleSort}>
+                               <MenuItem style={{color:"white"}} value="popularity.desc">Popular</MenuItem> 
+                               <MenuItem style={{color:"white"}} value="release_date.desc">Release</MenuItem> 
+                               <MenuItem style={{color:"white"}} value="original_title.desc">Title</MenuItem>
                             </Select>
                     </FormControl>
                 </div>

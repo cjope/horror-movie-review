@@ -59,7 +59,7 @@ body {
 
 /* NavButtons */
 .movies-nav{
-  /* background-color:rgb(39, 38, 38); */
+  background-color:rgb(39, 38, 38);
   position:absolute;
   width: 100%;
   z-index: 5;
@@ -92,7 +92,7 @@ body {
 }
 .search{
   color: orange;
-  background-color: rgb(39, 38, 38);
+  /* background-color: rgb(39, 38, 38); */
   font-size: 20px;
   margin-right: 6%;
 }
@@ -109,13 +109,14 @@ body {
 /* ReviewCard */
 .rc{
   display: flex;
-  box-shadow:
-  0 0 5px #fff,
+  /* box-shadow: */
+  /* 0 0 5px #fff,
   -1px 0 8px orange,
   1px 0 8px rgb(245, 205, 130);
   border-style: solid;
-  border-radius: 10px;
+  border-radius: 10px; */
   margin: 1%;
+
 }
 .rc-image{
   /* margin-top:1%; */
@@ -210,15 +211,23 @@ text-align: center;
 ::-webkit-scrollbar {display:none;}
 
 /* MovieCard */
-/* .mc{
-  background-color: black;
-} */
+.mc :hover{
+  background-image: none;
+}
+
+.MuiPopover-paper{
+  background-color: black !important;
+  color: white;
+}
+
+
 div.ui.card.mc-container:hover{
   box-shadow:
     0 0 5px #fff,
     -1px 0 8px orange,
     1px 0 8px rgb(245, 205, 130);
-  cursor: pointer;
+  z-index: 100;
+  /* cursor: pointer; */
 }
 .mc-container{
   height: 100%;
@@ -241,9 +250,9 @@ div.ui.card.mc-container:hover{
 .mcr{
   position: relative;
 }
-div.ui.card.mc-container{
+/* div.ui.card.mc-container{
   background-color: black;
-}
+} */
 
 .mcr-movie-name-redrum{
   position: absolute;
@@ -278,20 +287,24 @@ textarea{
   padding-inline: 2%;;
 } 
 .mcr-cancel{
-  width:40px;
-  height: 40px;
+  width:70px;
+  height: 70px;
   background: transparent;
+  background-color: white;
   color:orange;
   position:absolute;
   top:1%;
   right:2%;
   border-radius: 100%;
   opacity: .5;
+  z-index: 1000;
 }
 .mcr-cancel:hover{
   opacity: 1;
   cursor: pointer;
   border-color: orange;
+  background-color: orange;
+  color: white;
 } 
 .mcr-submit{
   background: transparent;
