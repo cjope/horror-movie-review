@@ -1,16 +1,8 @@
-// import VoteToStars from "./VotetoStars"
 import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
 
-import { Button, Icon, IconButton, Tooltip } from "@mui/material"
-import { useHistory } from 'react-router-dom';
+import { IconButton, Tooltip } from "@mui/material"
 
 function ReviewCard({movie, show, type, movies, shows}){
-    const history = useHistory()
-    
-
-    function reloadPage(){
-        history.go(0)
-    }
 
         function onDeleteClick(e){
             let typeName = ""

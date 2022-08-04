@@ -2,8 +2,6 @@ import { useEffect, useState } from "react"
 import MovieCard from "./MovieCard"
 import { Grid } from "semantic-ui-react"
 import NavButtons from "./NavButtons"
-import { Select } from "@mui/material"
-
 
 function Shows({notify}){
     const searchURL = "https://api.themoviedb.org/3/search/tv?api_key=058b20ba9bda19035670479e41a673af&sort_by=popularity.desc&query="
@@ -14,21 +12,14 @@ function Shows({notify}){
     const [sortBy, setSortBy] = useState("")
     const [genreData, setGenreData] = useState([])
     const [genre, setGenre] = useState("")
-
-
     const getGenres = `https://api.themoviedb.org/3/genre/tv/list?api_key=058b20ba9bda19035670479e41a673af&language=en-US`
-    const getSortby = `https://api.themoviedb.org/3/genre/tv/list?api_key=058b20ba9bda19035670479e41a673af&language=en-US`
-
     const browseTVURL = `https://api.themoviedb.org/3/discover/tv?api_key=058b20ba9bda19035670479e41a673af&language=en-US`
-
-
 
     useEffect(()=>{
         fetch(getGenres)
         .then(res => res.json())
         .then(data => setGenreData(data.genres))
     },[getGenres])
-
 
     useEffect(() => {
         if(searchQuery === "") {
@@ -44,14 +35,9 @@ function Shows({notify}){
             )
         }
         setSortBy("popularity.desc")
-
     },[searchQuery, page, browseTVURL, sortBy, genre])
 
-
-    const listShows = showsData.map(movie => 
-    <MovieCard key = {movie.id} movie = {movie} isFlipped={false} />)
-
-
+    const listShows = showsData.map(show => <MovieCard key={show.id} movie={show} isFlipped={false} />)
 
     return(
         <div className="movies-all">
@@ -65,8 +51,6 @@ function Shows({notify}){
                 genre={genre}
                 genreData={genreData}
             />
-
-   
             <div style={{display:"flex", justifyContent:"end"}}>
             </div>
             <Grid className="movie-grid" >
